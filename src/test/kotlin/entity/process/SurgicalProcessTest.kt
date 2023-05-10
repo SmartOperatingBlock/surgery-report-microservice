@@ -43,4 +43,29 @@ class SurgicalProcessTest : StringSpec({
     "two different surgical processes should not have the same hashcode" {
         surgicalProcess.hashCode() shouldNotBe differentSurgicalProcess.hashCode()
     }
+
+    SurgicalProcessStep.values().filter { it != SurgicalProcessStep.PATIENT_IN_PREPARATION }.forEach {
+        "Pre-surgery state must be only in the supported steps" {
+            shouldThrow<IllegalArgumentException> { SurgicalProcessState.PreSurgery(it) }
+        }
+    }
+
+    SurgicalProcessStep.values().filter {
+        it !in setOf(
+            SurgicalProcessStep.PATIENT_ON_OPERATING_TABLE,
+            SurgicalProcessStep.ANESTHESIA,
+            SurgicalProcessStep.SURGERY_IN_PROGRESS,
+            SurgicalProcessStep.END_OF_SURGERY,
+        )
+    }.forEach {
+        "Surgery state must be only in the supported steps" {
+            shouldThrow<IllegalArgumentException> { SurgicalProcessState.Surgery(it) }
+        }
+    }
+
+    SurgicalProcessStep.values().filter { it != SurgicalProcessStep.PATIENT_UNDER_OBSERVATION }.forEach {
+        "Post-surgery state must be only in the supported steps" {
+            shouldThrow<IllegalArgumentException> { SurgicalProcessState.PostSurgery(it) }
+        }
+    }
 })
