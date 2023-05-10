@@ -1,0 +1,48 @@
+/*
+ * Copyright (c) 2023. Smart Operating Block
+ *
+ * Use of this source code is governed by an MIT-style
+ * license that can be found in the LICENSE file or at
+ * https://opensource.org/licenses/MIT.
+ */
+
+package entity.medicaldevice
+
+/**
+ * It describes an implantable medical device used during a surgery inside an Operating Room.
+ * It is identified by its [id] and it is of a particular [type].
+ */
+data class ImplantableMedicalDevice(
+    val id: ImplantableMedicalDeviceID,
+    val type: ImplantableMedicalDeviceType,
+) {
+    override fun equals(other: Any?): Boolean = when {
+        other === this -> true
+        other is ImplantableMedicalDevice -> this.id == other.id
+        else -> false
+    }
+
+    override fun hashCode(): Int = this.id.hashCode()
+}
+
+/**
+ * Identification for [ImplantableMedicalDevice].
+ * @param[value] the id.
+ */
+data class ImplantableMedicalDeviceID(val value: String) {
+    init {
+        // Constructor validation: the id must not be empty
+        require(this.value.isNotEmpty())
+    }
+}
+
+/**
+ * The types of [ImplantableMedicalDevice].
+ */
+enum class ImplantableMedicalDeviceType {
+    /** The Catheter is an implantable medical device type. */
+    CATHETER,
+
+    /** The pacemaker is an implantable medical device type. */
+    PACEMAKER,
+}
