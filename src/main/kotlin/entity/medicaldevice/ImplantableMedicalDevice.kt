@@ -8,13 +8,16 @@
 
 package entity.medicaldevice
 
+import java.time.Instant
+
 /**
  * It describes an implantable medical device used during a surgery inside an Operating Room.
- * It is identified by its [id] and it is of a particular [type].
+ * It is identified by its [id] and it is of a particular [type] and it is used in a specific [usageDateTime].
  */
 data class ImplantableMedicalDevice(
     val id: ImplantableMedicalDeviceID,
     val type: ImplantableMedicalDeviceType,
+    val usageDateTime: Instant? = null,
 ) {
     override fun equals(other: Any?): Boolean = when {
         other === this -> true
