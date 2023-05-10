@@ -8,6 +8,8 @@
 
 package entity.medicaldevice
 
+import java.time.Instant
+
 /**
  * It describes a Medical Technology used inside an Operating Room.
  * A medical technology is of a particular [type] and is identified by its [id] and described by a [name] and
@@ -49,3 +51,5 @@ enum class MedicalTechnologyType {
     /** X-ray technology. */
     XRAY,
 }
+
+typealias MedicalTechnologyUsage = Pair<Instant, MedicalTechnology>
