@@ -93,7 +93,7 @@ jobs:
           submodules: recursive
           fetch-depth: 0
       - name: Generate and deploy documenation
-        uses: SmartOperatingBlock/documentation-ghp-action@1.0.0
+        uses: SmartOperatingBlock/documentation-ghp-action@1.1.0
         with:
           should-generate-code-documentation: true
           code-documentation-generation-command: ./gradlew dokkaHtml
