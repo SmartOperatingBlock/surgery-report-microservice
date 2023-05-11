@@ -21,11 +21,13 @@ import entity.room.RoomEnvironmentalData
 import entity.room.RoomType
 import entity.tracking.TrackingInfo
 import java.time.Instant
+import java.util.Date
 
 /**
  * It describes the surgery report, so the final product to be delivered to the user.
  * The information that are reported in the [SurgeryReport] are:
  * - [surgicalProcessID] the id of the process described in the report. It identifies the report.
+ * - [surgeryDate] the date of the surgery.
  * - [surgicalProcessDescription] the description of the surgery.
  * - [inChargeHealthProfessional] the health professional that is in charge of the surgery.
  * - [patientID] the identification of the patient.
@@ -38,6 +40,7 @@ import java.time.Instant
  */
 data class SurgeryReport(
     val surgicalProcessID: SurgicalProcessID,
+    val surgeryDate: Date,
     val surgicalProcessDescription: String,
     val inChargeHealthProfessional: HealthProfessionalID,
     val patientID: PatientID,

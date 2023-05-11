@@ -14,10 +14,13 @@ import entity.process.SurgicalProcessID
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
+import java.time.Instant
+import java.util.Date
 
 class SurgeryReportTest : StringSpec({
     val surgeryReport = SurgeryReport(
         SurgicalProcessID("p1"),
+        Date.from(Instant.now()),
         "description",
         HealthProfessionalID("h1"),
         PatientID("patient1"),
