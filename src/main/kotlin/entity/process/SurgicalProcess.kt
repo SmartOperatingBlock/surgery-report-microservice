@@ -12,10 +12,11 @@ import entity.healthcareuser.PatientID
 import entity.healthcareuser.TaxCode
 import entity.healthprofessional.HealthProfessionalID
 import entity.room.RoomID
+import java.time.Instant
 
 /**
  * It models the data associated to a surgical process that is happened inside the Operating Block.
- * Each process is identified by its [id] and it has a [type] that describes it.
+ * Each process is identified by its [id] and it has a [description].
  * Moreover, a surgical process during its progress pass between several [processStates].
  * The surgical process, obviously is a surgery that involve a [patientID], that when possible has a [taxCode]
  * associated, under the responsibility of a [inChargeHealthProfessional].
@@ -23,13 +24,13 @@ import entity.room.RoomID
  */
 data class SurgicalProcess(
     val id: SurgicalProcessID,
-    val type: String,
+    val description: String,
     val patientID: PatientID,
     val inChargeHealthProfessional: HealthProfessionalID,
     val preOperatingRoom: RoomID,
     val operatingRoom: RoomID,
     val taxCode: TaxCode? = null,
-    val processStates: List<SurgicalProcessState> = listOf(),
+    val processStates: List<Pair<Instant, SurgicalProcessState>> = listOf(),
 ) {
     override fun equals(other: Any?): Boolean = when {
         other === this -> true

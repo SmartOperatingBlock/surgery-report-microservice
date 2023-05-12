@@ -25,7 +25,7 @@ class SurgicalProcessTest : StringSpec({
         RoomID("preOp1"),
         RoomID("op1"),
     )
-    val surgicalProcessUpdated = surgicalProcess.copy(type = "type updated")
+    val surgicalProcessUpdated = surgicalProcess.copy(description = "description updated")
     val differentSurgicalProcess = surgicalProcess.copy(id = SurgicalProcessID("sp2"))
 
     "surgical process id should not be empty" {
