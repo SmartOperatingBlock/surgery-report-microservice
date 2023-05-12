@@ -32,4 +32,9 @@ interface SurgeryReportRepository {
      * The method return the surgery report if available, otherwise null.
      */
     fun getSurgeryReport(surgeryProcessID: SurgicalProcessID): SurgeryReport?
+
+    /**
+     * Get all the surgery reports that have been stored.
+     */
+    fun getSurgeryReports(): List<SurgeryReport>
 }
