@@ -8,16 +8,13 @@
 
 package entity.measurements
 
-import java.time.Instant
-
 /**
  * It describes aggregate data of type [E].
- * It is called [AggregateTimedData] because the [maximum] and the [minimum] value are associated to the
- * instant of measurement. Moreover, it stores the [average] and the [variance].
+ * It stores the [average], the [variance], the [maximum] and the [minimum].
  */
-data class AggregateTimedData<out E>(
+data class AggregateData<out E>(
     val average: E,
     val variance: E,
-    val maximum: Pair<Instant, E>,
-    val minimum: Pair<Instant, E>,
+    val maximum: E,
+    val minimum: E,
 )

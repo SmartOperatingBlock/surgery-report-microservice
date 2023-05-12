@@ -12,7 +12,7 @@ import entity.healthcareuser.HealthcareUser
 import entity.healthcareuser.PatientID
 import entity.healthcareuser.PatientVitalSigns
 import entity.healthprofessional.HealthProfessionalID
-import entity.measurements.AggregateTimedData
+import entity.measurements.AggregateData
 import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
 import entity.process.SurgicalProcessID
@@ -49,7 +49,7 @@ data class SurgeryReport(
     val consumedImplantableMedicalDevices: Set<ImplantableMedicalDevice>,
     val medicalTechnologyUsageData: Set<MedicalTechnologyUsage>,
     val healthProfessionalTrackingInformation: List<TrackingInfo<HealthProfessionalID>>,
-    val additionalData: String,
+    val additionalData: String = "",
 ) {
     override fun equals(other: Any?): Boolean = when {
         other === this -> true
@@ -67,6 +67,6 @@ data class SurgeryReport(
  */
 data class SurgeryProcessStepAggregateData(
     val startDateTime: Instant,
-    val patientVitalSignsAggregateData: AggregateTimedData<PatientVitalSigns>,
-    val environmentalAggregateData: Map<RoomType, AggregateTimedData<RoomEnvironmentalData>>,
+    val patientVitalSignsAggregateData: AggregateData<PatientVitalSigns>,
+    val environmentalAggregateData: Map<RoomType, AggregateData<RoomEnvironmentalData>>,
 )
