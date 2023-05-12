@@ -8,15 +8,25 @@
 
 package entity.process
 
+import entity.healthcareuser.PatientID
+import entity.healthprofessional.HealthProfessionalID
+import entity.room.RoomID
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.shouldNotBe
 
 class SurgicalProcessTest : StringSpec({
-    val surgicalProcess = SurgicalProcess(SurgicalProcessID("sp1"), "type1")
-    val surgicalProcessUpdated = SurgicalProcess(SurgicalProcessID("sp1"), "type2")
-    val differentSurgicalProcess = SurgicalProcess(SurgicalProcessID("sp2"), "type1")
+    val surgicalProcess = SurgicalProcess(
+        SurgicalProcessID("sp1"),
+        "type1",
+        PatientID("p1"),
+        HealthProfessionalID("h1"),
+        RoomID("preOp1"),
+        RoomID("op1"),
+    )
+    val surgicalProcessUpdated = surgicalProcess.copy(type = "type updated")
+    val differentSurgicalProcess = surgicalProcess.copy(id = SurgicalProcessID("sp2"))
 
     "surgical process id should not be empty" {
         shouldThrow<IllegalArgumentException> { SurgicalProcessID("") }
