@@ -74,10 +74,11 @@ class ReportGenerationUseCase(
             val vitalSignsInPeriod = this.patientVitalSigns
                 .takePeriod(dateTimeFrom, dateTimeTo)
                 .map { pair -> pair.second }
-            val environmentalDataInPeriod = this.environmentalData.mapValues { roomDataEntry -> roomDataEntry
-                .value
-                .takePeriod(dateTimeFrom, dateTimeTo)
-                .map { it.second }
+            val environmentalDataInPeriod = this.environmentalData.mapValues { roomDataEntry ->
+                roomDataEntry
+                    .value
+                    .takePeriod(dateTimeFrom, dateTimeTo)
+                    .map { it.second }
             }
             Pair(
                 stateEntry.second,
