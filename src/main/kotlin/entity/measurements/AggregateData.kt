@@ -10,11 +10,11 @@ package entity.measurements
 
 /**
  * It describes aggregate data of type [E].
- * It stores the [average], the [variance], the [maximum] and the [minimum].
+ * It stores the [average], the [std], the [maximum] and the [minimum].
  */
 data class AggregateData<out E>(
     val average: E,
-    val variance: E,
+    val std: E,
     val maximum: E,
     val minimum: E,
 )
