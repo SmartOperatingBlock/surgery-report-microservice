@@ -15,9 +15,9 @@ import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
 import entity.process.SurgicalProcess
 import entity.process.SurgicalProcessState
-import entity.process.SurgicalProcessStep
 import entity.report.SurgeryProcessStepAggregateData
 import entity.report.SurgeryReport
+import entity.room.Room
 import entity.room.RoomEnvironmentalData
 import entity.room.RoomType
 import entity.tracking.TrackingInfo
@@ -49,14 +49,14 @@ class ReportGenerationUseCase(
 ) : UseCase<SurgeryReport> {
     override fun execute(): SurgeryReport = SurgeryReport(
         this.surgicalProcess.id,
-        Date.from(
-            this.surgicalProcess.processStates.first {
-                it.second == SurgicalProcessState.PreSurgery(SurgicalProcessStep.PATIENT_IN_PREPARATION)
-            }.first,
-        ),
+        Date.from(GetSurgicalProcessStartEndUseCase(this.surgicalProcess).execute().first),
         this.surgicalProcess.description,
         this.surgicalProcess.inChargeHealthProfessional,
         this.surgicalProcess.patientID,
+        setOf(
+            Room(surgicalProcess.preOperatingRoom, RoomType.PRE_OPERATING_ROOM),
+            Room(surgicalProcess.operatingRoom, RoomType.OPERATING_ROOM),
+        ),
         this.healthcareUser,
         computeAggregateData(),
         this.consumedImplantableMedicalDevices,

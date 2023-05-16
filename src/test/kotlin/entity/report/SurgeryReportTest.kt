@@ -24,6 +24,7 @@ class SurgeryReportTest : StringSpec({
         "description",
         HealthProfessionalID("h1"),
         PatientID("patient1"),
+        setOf(),
         null,
         mapOf(),
         setOf(),
