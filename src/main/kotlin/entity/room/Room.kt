@@ -12,17 +12,14 @@ import entity.measurements.Humidity
 import entity.measurements.Luminosity
 import entity.measurements.Presence
 import entity.measurements.Temperature
-import java.time.Instant
 
 /**
  * It describes a room inside the Operating Block.
  * Each room has a [type] and is identified by an [id].
- * Each room has [environmentalData] associated.
  */
 data class Room(
     val id: RoomID,
     val type: RoomType,
-    val environmentalData: List<Pair<Instant, RoomEnvironmentalData>> = listOf(),
 ) {
     override fun equals(other: Any?): Boolean = when {
         other === this -> true
