@@ -76,4 +76,18 @@ object SurgeryReportService {
     ) : ApplicationService<SurgeryReport?> {
         override fun execute(): SurgeryReport? = this.surgeryReportRepository.findBy(this.surgicalProcessID)
     }
+
+    /**
+     * Application Service that has the objective of integrate a [SurgeryReport] identified by its [surgicalProcessID]
+     * with [additionalInformation] using the provided [surgeryReportRepository].
+     * It returns true if the integration is successful, false otherwise.
+     */
+    class IntegrateSurgeryReport(
+        private val surgicalProcessID: SurgicalProcessID,
+        private val additionalInformation: String,
+        private val surgeryReportRepository: SurgeryReportRepository,
+    ) : ApplicationService<Boolean> {
+        override fun execute(): Boolean =
+            this.surgeryReportRepository.integrateSurgeryReport(this.surgicalProcessID, this.additionalInformation)
+    }
 }
