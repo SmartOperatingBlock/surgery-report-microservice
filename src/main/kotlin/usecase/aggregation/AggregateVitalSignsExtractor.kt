@@ -32,24 +32,25 @@ class AggregateVitalSignsExtractor(
     private fun Collection<PatientVitalSigns>.applyAggregationToVitalSigns(
         operation: Collection<Double>.() -> Double,
     ): PatientVitalSigns = PatientVitalSigns(
-        heartBeat = VitalSign.HeartBeat(this.mapNotNull { it.heartBeat?.bpm?.toDouble() }.operation().toInt()),
-        diastolicBloodPressure = VitalSign.DiastolicBloodPressure(
-            this.mapNotNull { it.diastolicBloodPressure?.pressure?.toDouble() }.operation().toInt(),
-        ),
-        systolicBloodPressure = VitalSign.SystolicBloodPressure(
-            this.mapNotNull { it.systolicBloodPressure?.pressure?.toDouble() }.operation().toInt(),
-        ),
-        respiratoryRate = VitalSign.RespiratoryRate(
-            this.mapNotNull { it.respiratoryRate?.rate?.toDouble() }.operation().toInt(),
-        ),
-        saturationPercentage = VitalSign.SaturationPercentage(
-            Percentage(this.mapNotNull { it.saturationPercentage?.percentage?.value }.operation()),
-        ),
-        bodyTemperature = VitalSign.BodyTemperature(
-            Temperature(
-                this.mapNotNull { it.bodyTemperature?.temperature?.value }.operation(),
-                TemperatureUnit.CELSIUS,
-            ),
-        ),
+        heartBeat = this.mapNotNull { it.heartBeat?.bpm?.toDouble() }.let {
+            if (it.isNotEmpty()) VitalSign.HeartBeat(it.operation().toInt()) else null
+        },
+        diastolicBloodPressure = this.mapNotNull { it.diastolicBloodPressure?.pressure?.toDouble() }.let {
+            if (it.isNotEmpty()) VitalSign.DiastolicBloodPressure(it.operation().toInt()) else null
+        },
+        systolicBloodPressure = this.mapNotNull { it.systolicBloodPressure?.pressure?.toDouble() }.let {
+            if (it.isNotEmpty()) VitalSign.SystolicBloodPressure(it.operation().toInt()) else null
+        },
+        respiratoryRate = this.mapNotNull { it.respiratoryRate?.rate?.toDouble() }.let {
+            if (it.isNotEmpty()) VitalSign.RespiratoryRate(it.operation().toInt()) else null
+        },
+        saturationPercentage = this.mapNotNull { it.saturationPercentage?.percentage?.value }.let {
+            if (it.isNotEmpty()) VitalSign.SaturationPercentage(Percentage(it.operation())) else null
+        },
+        bodyTemperature = this.mapNotNull { it.bodyTemperature?.temperature?.value }.let {
+            if (it.isNotEmpty()) {
+                VitalSign.BodyTemperature(Temperature(it.operation(), TemperatureUnit.CELSIUS))
+            } else { null }
+        },
     )
 }
