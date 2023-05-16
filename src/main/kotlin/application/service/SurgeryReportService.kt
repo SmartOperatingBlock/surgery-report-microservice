@@ -12,6 +12,7 @@ import entity.healthcareuser.PatientVitalSigns
 import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
 import entity.process.SurgicalProcess
+import entity.process.SurgicalProcessID
 import entity.report.SurgeryReport
 import entity.room.RoomType
 import usecase.GetSurgicalProcessStartEndUseCase
@@ -63,5 +64,16 @@ object SurgeryReportService {
                 ).execute()
                 if (surgeryReportRepository.createSurgeryReport(surgeryReport)) surgeryReport else null
             }
+    }
+
+    /**
+     * Application Service that has the objective of getting the [SurgeryReport] associated to a
+     * [surgicalProcessID] using the provided [surgeryReportRepository].
+     */
+    class GetSurgeryReport(
+        private val surgicalProcessID: SurgicalProcessID,
+        private val surgeryReportRepository: SurgeryReportRepository,
+    ) : ApplicationService<SurgeryReport?> {
+        override fun execute(): SurgeryReport? = this.surgeryReportRepository.findBy(this.surgicalProcessID)
     }
 }
