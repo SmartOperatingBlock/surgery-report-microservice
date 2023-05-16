@@ -8,6 +8,8 @@
 
 package application.service
 
+import application.presenter.api.model.SurgeryReportEntry
+import application.presenter.api.serialization.ApiSerializer.toSurgeryReportEntry
 import entity.healthcareuser.PatientVitalSigns
 import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
@@ -89,5 +91,16 @@ object SurgeryReportService {
     ) : ApplicationService<Boolean> {
         override fun execute(): Boolean =
             this.surgeryReportRepository.integrateSurgeryReport(this.surgicalProcessID, this.additionalInformation)
+    }
+
+    /**
+     * Application Service that has the objective to obtain all the surgery report that have been generated in the form
+     * of [SurgeryReportEntry]. It will be performed using the provided [surgeryReportRepository].
+     */
+    class GetAllSurgeryReportEntry(
+        private val surgeryReportRepository: SurgeryReportRepository,
+    ) : ApplicationService<List<SurgeryReportEntry>> {
+        override fun execute(): List<SurgeryReportEntry> =
+            this.surgeryReportRepository.getSurgeryReports().map { it.toSurgeryReportEntry() }
     }
 }
