@@ -31,7 +31,7 @@ interface SurgeryReportRepository {
      * Get a surgery report that describe a surgical process identified by its [surgeryProcessID].
      * The method return the surgery report if available, otherwise null.
      */
-    fun getSurgeryReport(surgeryProcessID: SurgicalProcessID): SurgeryReport?
+    fun findBy(surgeryProcessID: SurgicalProcessID): SurgeryReport?
 
     /**
      * Get all the surgery reports that have been stored.
