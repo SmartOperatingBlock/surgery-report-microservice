@@ -9,7 +9,7 @@
 package application.service
 
 import application.presenter.api.model.SurgeryReportEntry
-import application.presenter.api.serialization.ApiSerializer.toSurgeryReportEntry
+import application.presenter.api.serialization.SurgeryReportSerializer.toSurgeryReportEntry
 import entity.healthcareuser.PatientVitalSigns
 import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
