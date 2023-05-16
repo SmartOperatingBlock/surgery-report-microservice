@@ -19,15 +19,13 @@ class GetSurgicalProcessStartEndDateTimeTest : StringSpec({
     val stopDateTimeTerminated = Instant.parse("2020-10-03T09:00:00Z")
     val stopDateTimeInterrupted = Instant.parse("2020-10-03T08:25:00Z")
 
-    "It should be able to extract the start date time from a surgical process that is terminated correctly" {
+    "It should be able to extract the date time from a surgical process that is terminated correctly" {
         val dateTime = GetSurgicalProcessStartEndUseCase(simpleSurgicalProcess).execute()
-        dateTime.first shouldBe startDateTime
-        dateTime.second shouldBe stopDateTimeTerminated
+        dateTime shouldBe (startDateTime to stopDateTimeTerminated)
     }
 
-    "It should be able to extract the start date time from a surgical process that has been interrupted" {
+    "It should be able to extract the date time from a surgical process that has been interrupted" {
         val dateTime = GetSurgicalProcessStartEndUseCase(simpleSurgicalProcessInterrupted).execute()
-        dateTime.first shouldBe startDateTime
-        dateTime.second shouldBe stopDateTimeInterrupted
+        dateTime shouldBe (startDateTime to stopDateTimeInterrupted)
     }
 })
