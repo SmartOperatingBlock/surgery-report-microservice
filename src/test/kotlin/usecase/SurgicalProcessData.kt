@@ -112,4 +112,24 @@ object SurgicalProcessData {
             ),
         ),
     )
+
+    val simpleSurgicalProcessInterrupted = SurgicalProcess(
+        SurgicalProcessID("process"),
+        "description",
+        PatientID("patient"),
+        HealthProfessionalID("health professional"),
+        RoomID("room1"),
+        RoomID("room2"),
+        taxCode = null,
+        listOf(
+            Pair(
+                Instant.parse("2020-10-03T08:10:00Z"),
+                SurgicalProcessState.PreSurgery(SurgicalProcessStep.PATIENT_IN_PREPARATION),
+            ),
+            Pair(
+                Instant.parse("2020-10-03T08:25:00Z"),
+                SurgicalProcessState.Interrupted(),
+            ),
+        ),
+    )
 }
