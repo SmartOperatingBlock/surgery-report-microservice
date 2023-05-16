@@ -8,6 +8,16 @@
 
 package application.presenter.api.model
 
+import application.presenter.api.model.healthcareuser.HealthcareUserApiDto
+import application.presenter.api.model.healthcareuser.PatientVitalSignsApiDto
+import application.presenter.api.model.measurements.AggregateDataApiDto
+import application.presenter.api.model.medicaldevice.ImplantableMedicalDeviceApiDto
+import application.presenter.api.model.medicaldevice.MedicalTechnologyApiDto
+import application.presenter.api.model.process.SurgicalProcessStateStepApiDto
+import application.presenter.api.model.room.RoomApiDto
+import application.presenter.api.model.room.RoomApiDtoType
+import application.presenter.api.model.room.RoomEnvironmentalDataApiDto
+import application.presenter.api.model.tracking.TrackingInformationApiDto
 import kotlinx.serialization.Serializable
 
 /**
@@ -25,65 +35,37 @@ data class SurgeryReportEntry(
     val surgeryDate: String,
 )
 
-// @Serializable
-// data class SurgeryReportApiDto(
-//    val surgicalProcessID: String,
-//    val surgeryDate: String,
-//    val surgicalProcessDescription: String,
-//    val inChargeHealthProfessionalID: String,
-//    val patientID: String,
-//    val roomsInvolved: List<RoomApiDto>,
-//    val healthcareUser: HealthcareUserApiDto?,
-//    val statesData: Map<SurgicalProcessStateStepApiDto, >
-// )
-
 /**
- * Presenter class to serialize [entity.room.Room] information.
- * The necessary information are [id] and [type].
+ * It represents the presentation of a [entity.report.SurgeryReport].
+ * The necessary information are: the [surgicalProcessID], the [surgeryDate], the [surgicalProcessDescription],
+ * the [inChargeHealthProfessionalID], the [patientID], the [roomsInvolved], the [healthcareUser], the [statesData],
+ * the [consumedImplantableMedicalDevice], the [medicalTechnologyUsageData], the [healthProfessionalTrackingInformation]
+ * and the [additionalData].
  */
 @Serializable
-data class RoomApiDto(
-    val id: String,
-    val type: String,
+data class SurgeryReportApiDto(
+    val surgicalProcessID: String,
+    val surgeryDate: String,
+    val surgicalProcessDescription: String,
+    val inChargeHealthProfessionalID: String,
+    val patientID: String,
+    val roomsInvolved: List<RoomApiDto>,
+    val healthcareUser: HealthcareUserApiDto?,
+    val statesData: Map<SurgicalProcessStateStepApiDto, SurgicalProcessStepAggregateDataApiDto>,
+    val consumedImplantableMedicalDevice: Set<ImplantableMedicalDeviceApiDto>,
+    val medicalTechnologyUsageData: Set<Pair<String, MedicalTechnologyApiDto>>,
+    val healthProfessionalTrackingInformation: List<TrackingInformationApiDto>,
+    val additionalData: String,
 )
 
 /**
- * Presenter class to serialize [entity.healthcareuser.HealthcareUser] information.
- * The necessary information are the [taxCode], the [name] and the [surname].
+ * Presenter class for the [entity.report.SurgeryProcessStepAggregateData].
+ * It represents its [startDateTime], [stopDateTime], [patientVitalSignAggregateData] and [environmentalAggregateData].
  */
 @Serializable
-data class HealthcareUserApiDto(
-    val taxCode: String,
-    val name: String,
-    val surname: String,
+data class SurgicalProcessStepAggregateDataApiDto(
+    val startDateTime: String,
+    val stopDateTime: String?,
+    val patientVitalSignAggregateData: AggregateDataApiDto<PatientVitalSignsApiDto>,
+    val environmentalAggregateData: Map<RoomApiDtoType, AggregateDataApiDto<RoomEnvironmentalDataApiDto>>,
 )
-
-/**
-* Presenter enum class to represent the surgical process states and steps.
-*/
-@Serializable
-enum class SurgicalProcessStateStepApiDto {
-    /** Pre-surgery state - patient in preparation step. */
-    PRE_SURGERY_PATIENT_IN_PREPARATION,
-
-    /** Surgery state - patient on operating table step. */
-    SURGERY_PATIENT_ON_OPERATING_TABLE,
-
-    /** Surgery state - anesthesia step. */
-    SURGERY_ANESTHESIA,
-
-    /** Surgery state - surgery in progress step. */
-    SURGERY_SURGERY_IN_PROGRESS,
-
-    /** Surgery state - end of surgery step. */
-    SURGERY_END_OF_SURGERY,
-
-    /** Post-surgery state - patient under observation step. */
-    POST_SURGERY_PATIENT_UNDER_OBSERVATION,
-
-    /** Interrupted state. */
-    INTERRUPTED,
-
-    /** Terminated state. */
-    TERMINATED,
-}
