@@ -35,14 +35,14 @@ class AggregateRoomEnvironmentalDataExtractor(
     private fun Collection<RoomEnvironmentalData>.applyAggregationToRoomEnvironmentalData(
         operation: Collection<Double>.() -> Double,
     ): RoomEnvironmentalData = RoomEnvironmentalData(
-        temperature = Temperature(
-            this.mapNotNull { it.temperature?.value }.operation(),
-            TemperatureUnit.CELSIUS,
-        ),
-        humidity = Humidity(Percentage(this.mapNotNull { it.humidity?.percentage?.value }.operation())),
-        luminosity = Luminosity(
-            this.mapNotNull { it.luminosity?.value }.operation(),
-            LightUnit.LUX,
-        ),
+        temperature = this.mapNotNull { it.temperature?.value }.let {
+            if (it.isNotEmpty()) Temperature(it.operation(), TemperatureUnit.CELSIUS) else null
+        },
+        humidity = this.mapNotNull { it.humidity?.percentage?.value }.let {
+            if (it.isNotEmpty()) Humidity(Percentage(it.operation())) else null
+        },
+        luminosity = this.mapNotNull { it.luminosity?.value }.let {
+            if (it.isNotEmpty()) Luminosity(it.operation(), LightUnit.LUX) else null
+        },
     )
 }
