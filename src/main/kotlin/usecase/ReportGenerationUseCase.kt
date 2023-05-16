@@ -83,7 +83,8 @@ class ReportGenerationUseCase(
             Pair(
                 stateEntry.second,
                 SurgeryProcessStepAggregateData(
-                    stateEntry.first,
+                    dateTimeFrom,
+                    dateTimeTo,
                     AggregateVitalSignsExtractor(vitalSignsInPeriod).aggregate(),
                     environmentalDataInPeriod.mapValues { roomDataEntry ->
                         AggregateRoomEnvironmentalDataExtractor(roomDataEntry.value).aggregate()

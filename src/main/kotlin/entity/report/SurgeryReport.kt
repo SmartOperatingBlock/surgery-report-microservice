@@ -62,11 +62,12 @@ data class SurgeryReport(
 
 /**
  * Aggregate data about each step of the Surgical process described in [SurgeryReport].
- * It contains the [startDateTime] of the step, and the [patientVitalSignsAggregateData]
+ * It contains the [startDateTime] and the [stopDateTime] of the step, the [patientVitalSignsAggregateData]
  * and the [environmentalAggregateData].
  */
 data class SurgeryProcessStepAggregateData(
     val startDateTime: Instant,
+    val stopDateTime: Instant?,
     val patientVitalSignsAggregateData: AggregateData<PatientVitalSigns>,
     val environmentalAggregateData: Map<RoomType, AggregateData<RoomEnvironmentalData>>,
 )
