@@ -11,6 +11,7 @@ plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kotlin.qa)
     alias(libs.plugins.dokka)
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "io.github.smartoperatingblock"
@@ -21,6 +22,7 @@ repositories {
 
 dependencies {
     implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.serialization.json)
     testImplementation(libs.bundles.kotlin.testing)
 }
 
