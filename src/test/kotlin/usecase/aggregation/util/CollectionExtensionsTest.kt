@@ -48,4 +48,12 @@ class CollectionExtensionsTest : StringSpec({
             Pair(Instant.parse("2020-10-07T08:10:00Z"), 6.0),
         )
     }
+
+    "if there isn't data in that period the takePeriod should work properly" {
+        val emptyPeriod = collection.takePeriod(
+            Instant.parse("2020-12-04T00:00:00Z"),
+            Instant.parse("2020-12-05T00:00:00Z"),
+        )
+        emptyPeriod.size shouldBe 0
+    }
 })
