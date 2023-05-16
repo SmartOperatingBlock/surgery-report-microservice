@@ -67,6 +67,8 @@ class ReportGenerationUseCase(
     private fun computeAggregateData(): Map<SurgicalProcessState, SurgeryProcessStepAggregateData> {
         val stateSorted = this.surgicalProcess.processStates.sortedBy { it.first }
         val finalDateIterator = stateSorted.map { it.first }.iterator()
+        // the start date of the next step correspond to the end date of the previous one
+        if (finalDateIterator.hasNext()) finalDateIterator.next()
 
         return stateSorted.associate { stateEntry ->
             val dateTimeFrom = stateEntry.first
