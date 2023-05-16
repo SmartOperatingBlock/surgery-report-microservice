@@ -8,6 +8,7 @@
 
 package usecase.aggregation
 
+import entity.measurements.AggregateData
 import entity.measurements.Humidity
 import entity.measurements.Luminosity
 import entity.measurements.Percentage
@@ -66,5 +67,14 @@ class AggregateRoomEnvironmentalDataExtractorTest : StringSpec({
 
     "It should be able to extract minimum values from a collection of room environmental data" {
         aggregateData.minimum shouldBe minimum
+    }
+
+    "If the list is empty the extractor should work and return an empty instance of data" {
+        AggregateRoomEnvironmentalDataExtractor(listOf()).aggregate() shouldBe AggregateData(
+            RoomEnvironmentalData(),
+            RoomEnvironmentalData(),
+            RoomEnvironmentalData(),
+            RoomEnvironmentalData(),
+        )
     }
 })
