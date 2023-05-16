@@ -57,7 +57,7 @@ data class SurgicalProcessID(val value: String) {
  * Each state is in a [currentStep] that must be supported.
  */
 sealed class SurgicalProcessState(
-    val currentStep: SurgicalProcessStep? = null,
+    private val currentStep: SurgicalProcessStep? = null,
     supportedSteps: Set<SurgicalProcessStep> = setOf(),
 ) {
 
@@ -65,14 +65,14 @@ sealed class SurgicalProcessState(
         require(currentStep == null || currentStep in supportedSteps)
     }
 
-    /** Pre-surgery state. */
-    class PreSurgery(currentStep: SurgicalProcessStep) : SurgicalProcessState(
+    /** Pre-surgery state with the [currentStep]. */
+    data class PreSurgery(val currentStep: SurgicalProcessStep) : SurgicalProcessState(
         currentStep,
         setOf(SurgicalProcessStep.PATIENT_IN_PREPARATION),
     )
 
-    /** Surgery state. */
-    class Surgery(currentStep: SurgicalProcessStep) : SurgicalProcessState(
+    /** Surgery state with the [currentStep]. */
+    data class Surgery(val currentStep: SurgicalProcessStep) : SurgicalProcessState(
         currentStep,
         setOf(
             SurgicalProcessStep.PATIENT_ON_OPERATING_TABLE,
@@ -82,8 +82,8 @@ sealed class SurgicalProcessState(
         ),
     )
 
-    /** Post-surgery state. */
-    class PostSurgery(currentStep: SurgicalProcessStep) : SurgicalProcessState(
+    /** Post-surgery state with the [currentStep]. */
+    data class PostSurgery(val currentStep: SurgicalProcessStep) : SurgicalProcessState(
         currentStep,
         setOf(SurgicalProcessStep.PATIENT_UNDER_OBSERVATION),
     )
