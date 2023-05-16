@@ -9,6 +9,7 @@
 package usecase.repository
 
 import entity.healthprofessional.HealthProfessionalID
+import entity.room.RoomID
 import entity.tracking.TrackingInfo
 import java.time.Instant
 
@@ -17,11 +18,11 @@ import java.time.Instant
  */
 fun interface HealthProfessionalRepository {
     /**
-     * Get the tracking information within the Operating Block of a health professional, identified by its
-     * [healthProfessionalID], [from] a specific date time [to] a specific date time.
+     * Get the tracking information within a room, identified by its [roomID], inside the Operating Block
+     * of health professionals, [from] a specific date time [to] a specific date time.
      */
     fun getHealthProfessionalTrackingInfo(
-        healthProfessionalID: HealthProfessionalID,
+        roomID: RoomID,
         from: Instant,
         to: Instant,
     ): List<TrackingInfo<HealthProfessionalID>>
