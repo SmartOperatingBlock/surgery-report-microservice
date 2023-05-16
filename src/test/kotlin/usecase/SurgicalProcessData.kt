@@ -8,14 +8,22 @@
 
 package usecase
 
+import entity.healthcareuser.PatientID
 import entity.healthcareuser.PatientVitalSigns
 import entity.healthcareuser.VitalSign
+import entity.healthprofessional.HealthProfessionalID
 import entity.measurements.Humidity
 import entity.measurements.Luminosity
 import entity.measurements.Percentage
 import entity.measurements.Presence
 import entity.measurements.Temperature
+import entity.process.SurgicalProcess
+import entity.process.SurgicalProcessID
+import entity.process.SurgicalProcessState
+import entity.process.SurgicalProcessStep
 import entity.room.RoomEnvironmentalData
+import entity.room.RoomID
+import java.time.Instant
 
 /**
  * Module that wraps some data about simple surgical processes.
@@ -66,6 +74,42 @@ object SurgicalProcessData {
             Humidity(Percentage(80.0)),
             Luminosity(300.0),
             Presence(true),
+        ),
+    )
+
+    val simpleSurgicalProcess = SurgicalProcess(
+        SurgicalProcessID("process"),
+        "description",
+        PatientID("patient"),
+        HealthProfessionalID("health professional"),
+        RoomID("room1"),
+        RoomID("room2"),
+        taxCode = null,
+        listOf(
+            Pair(
+                Instant.parse("2020-10-03T08:10:00Z"),
+                SurgicalProcessState.PreSurgery(SurgicalProcessStep.PATIENT_IN_PREPARATION),
+            ),
+            Pair(
+                Instant.parse("2020-10-03T08:12:00Z"),
+                SurgicalProcessState.Surgery(SurgicalProcessStep.PATIENT_ON_OPERATING_TABLE),
+            ),
+            Pair(
+                Instant.parse("2020-10-03T08:15:00Z"),
+                SurgicalProcessState.Surgery(SurgicalProcessStep.SURGERY_IN_PROGRESS),
+            ),
+            Pair(
+                Instant.parse("2020-10-03T08:18:00Z"),
+                SurgicalProcessState.Surgery(SurgicalProcessStep.END_OF_SURGERY),
+            ),
+            Pair(
+                Instant.parse("2020-10-03T08:20:00Z"),
+                SurgicalProcessState.PostSurgery(SurgicalProcessStep.PATIENT_UNDER_OBSERVATION),
+            ),
+            Pair(
+                Instant.parse("2020-10-03T09:00:00Z"),
+                SurgicalProcessState.Terminated(),
+            ),
         ),
     )
 }
