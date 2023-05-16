@@ -10,6 +10,7 @@ package usecase.aggregation
 
 import entity.healthcareuser.PatientVitalSigns
 import entity.healthcareuser.VitalSign
+import entity.measurements.AggregateData
 import entity.measurements.Percentage
 import entity.measurements.Temperature
 import io.kotest.core.spec.style.StringSpec
@@ -81,5 +82,14 @@ class AggregateVitalSignsExtractorTest : StringSpec({
 
     "It should be able to extract minimum values from a collection of patient vital signs" {
         aggregateData.minimum shouldBe minimum
+    }
+
+    "If the list is empty the extractor should work and return an empty instance of data" {
+        AggregateVitalSignsExtractor(listOf()).aggregate() shouldBe AggregateData(
+            PatientVitalSigns(),
+            PatientVitalSigns(),
+            PatientVitalSigns(),
+            PatientVitalSigns(),
+        )
     }
 })
