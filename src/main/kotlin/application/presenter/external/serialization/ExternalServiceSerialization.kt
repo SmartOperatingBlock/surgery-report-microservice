@@ -8,9 +8,8 @@
 
 package application.presenter.external.serialization
 
-import application.presenter.external.model.HealthcareUserResultDto
-import application.presenter.external.model.TrackingInfoResultDto
-import application.presenter.external.model.TrackingTypeResultDto
+import application.presenter.external.model.PatientManagementIntegrationDtoModel
+import application.presenter.external.model.StaffTrackingDtoModel
 import entity.healthcareuser.HealthcareUser
 import entity.healthcareuser.TaxCode
 import entity.healthprofessional.HealthProfessionalID
@@ -24,28 +23,32 @@ import java.time.Instant
  */
 object ExternalServiceSerialization {
     /**
-     * Extension method to obtain the [HealthcareUser] from an [HealthcareUserResultDto].
+     * Extension method to obtain the [HealthcareUser] from an
+     * [PatientManagementIntegrationDtoModel.HealthcareUserResultDto].
      * @return the deserialized healthcare user.
      */
-    fun HealthcareUserResultDto.toHealthcareUser(): HealthcareUser = HealthcareUser(
-        taxCode = TaxCode(this.taxCode),
-        name = this.name,
-        surname = this.surname,
-    )
+    fun PatientManagementIntegrationDtoModel.HealthcareUserResultDto.toHealthcareUser(): HealthcareUser =
+        HealthcareUser(
+            taxCode = TaxCode(this.taxCode),
+            name = this.name,
+            surname = this.surname,
+        )
 
     /**
-     * Extension method to obtain the [TrackingInfo] of an [HealthProfessionalID] from a [TrackingInfoResultDto].
+     * Extension method to obtain the [TrackingInfo] of an [HealthProfessionalID] from a
+     * [StaffTrackingDtoModel.TrackingInfoResultDto].
      * @return the deserialized tracking information about a health professional
      */
-    fun TrackingInfoResultDto.toHealthProfessionalTrackingInfo(): TrackingInfo<HealthProfessionalID> = TrackingInfo(
+    fun StaffTrackingDtoModel.TrackingInfoResultDto.toHealthProfessionalTrackingInfo():
+        TrackingInfo<HealthProfessionalID> = TrackingInfo(
         dateTime = Instant.parse(this.dateTime),
         individual = HealthProfessionalID(this.healthProfessionalId),
         roomID = RoomID(this.roomId),
         trackType = this.trackingType.toTrackingType(),
     )
 
-    private fun TrackingTypeResultDto.toTrackingType(): TrackType = when (this) {
-        TrackingTypeResultDto.ENTER -> TrackType.ENTER
-        TrackingTypeResultDto.EXIT -> TrackType.EXIT
+    private fun StaffTrackingDtoModel.TrackingTypeResultDto.toTrackingType(): TrackType = when (this) {
+        StaffTrackingDtoModel.TrackingTypeResultDto.ENTER -> TrackType.ENTER
+        StaffTrackingDtoModel.TrackingTypeResultDto.EXIT -> TrackType.EXIT
     }
 }

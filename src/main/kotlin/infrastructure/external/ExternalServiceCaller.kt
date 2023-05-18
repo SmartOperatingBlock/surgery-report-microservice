@@ -9,8 +9,8 @@
 package infrastructure.external
 
 import application.presenter.external.model.ApiResponses
-import application.presenter.external.model.HealthcareUserResultDto
-import application.presenter.external.model.TrackingInfoResultDto
+import application.presenter.external.model.PatientManagementIntegrationDtoModel
+import application.presenter.external.model.StaffTrackingDtoModel
 import application.presenter.external.serialization.ExternalServiceSerialization.toHealthProfessionalTrackingInfo
 import application.presenter.external.serialization.ExternalServiceSerialization.toHealthcareUser
 import entity.healthcareuser.HealthcareUser
@@ -57,7 +57,7 @@ class ExternalServiceCaller : HealthcareUserRepository, HealthProfessionalReposi
             }.let {
                 when (it.status) {
                     HttpStatusCode.NotFound, HttpStatusCode.InternalServerError -> null
-                    else -> it.body<HealthcareUserResultDto>().toHealthcareUser()
+                    else -> it.body<PatientManagementIntegrationDtoModel.HealthcareUserResultDto>().toHealthcareUser()
                 }
             }
         }
@@ -78,7 +78,7 @@ class ExternalServiceCaller : HealthcareUserRepository, HealthProfessionalReposi
                 when (response.status) {
                     HttpStatusCode.NoContent, HttpStatusCode.InternalServerError -> listOf()
                     else ->
-                        response.body<ApiResponses.ResponseEntryList<TrackingInfoResultDto>>()
+                        response.body<ApiResponses.ResponseEntryList<StaffTrackingDtoModel.TrackingInfoResultDto>>()
                             .entries
                             .map { it.toHealthProfessionalTrackingInfo() }
                 }
