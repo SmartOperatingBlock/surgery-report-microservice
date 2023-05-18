@@ -23,8 +23,10 @@ repositories {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.serialization.json)
+    implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.engine.okhttp)
+    implementation(libs.ktor.content.negotiation.json)
     testImplementation(libs.bundles.kotlin.testing)
 }
 
@@ -47,4 +49,8 @@ tasks.withType<Test> {
         events(*org.gradle.api.tasks.testing.logging.TestLogEvent.values())
         exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
     }
+}
+
+application {
+    mainClass.set("AppKt")
 }
