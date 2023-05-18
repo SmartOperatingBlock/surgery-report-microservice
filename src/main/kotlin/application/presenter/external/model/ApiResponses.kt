@@ -22,6 +22,13 @@ object ApiResponses {
     data class ResponseEntry<out T>(val entry: T, val url: String?)
 
     /**
+     * Class that represents an [entry] returned as response by an API.
+     * Each entry is associated with its [date].
+     */
+    @Serializable
+    data class ResponseTimedEntry<out T>(val entry: T, val date: String)
+
+    /**
      * Class that represents a list of [entries] returned as response to an API request.
      * As the REST API best-practise recommend it is included also the [total] number of the entries.
      */
