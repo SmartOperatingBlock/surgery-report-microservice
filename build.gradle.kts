@@ -23,6 +23,8 @@ repositories {
 dependencies {
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.serialization.json)
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.engine.okhttp)
     testImplementation(libs.bundles.kotlin.testing)
 }
 
