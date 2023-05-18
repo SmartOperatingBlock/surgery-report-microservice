@@ -8,11 +8,20 @@
 
 package application.presenter.external.serialization
 
+import application.presenter.external.model.BuildingManagementDtoModel
 import application.presenter.external.model.PatientManagementIntegrationDtoModel
 import application.presenter.external.model.StaffTrackingDtoModel
 import entity.healthcareuser.HealthcareUser
 import entity.healthcareuser.TaxCode
 import entity.healthprofessional.HealthProfessionalID
+import entity.measurements.Humidity
+import entity.measurements.LightUnit
+import entity.measurements.Luminosity
+import entity.measurements.Percentage
+import entity.measurements.Presence
+import entity.measurements.Temperature
+import entity.measurements.TemperatureUnit
+import entity.room.RoomEnvironmentalData
 import entity.room.RoomID
 import entity.tracking.TrackType
 import entity.tracking.TrackingInfo
@@ -50,5 +59,26 @@ object ExternalServiceSerialization {
     private fun StaffTrackingDtoModel.TrackingTypeResultDto.toTrackingType(): TrackType = when (this) {
         StaffTrackingDtoModel.TrackingTypeResultDto.ENTER -> TrackType.ENTER
         StaffTrackingDtoModel.TrackingTypeResultDto.EXIT -> TrackType.EXIT
+    }
+
+    /**
+     * Extension method to obtain the [RoomEnvironmentalData] from a
+     * [BuildingManagementDtoModel.EnvironmentalDataApiDto].
+     * @return the deserialized room environmental data
+     */
+    fun BuildingManagementDtoModel.EnvironmentalDataApiDto.toRoomEnvironmentalData(): RoomEnvironmentalData =
+        RoomEnvironmentalData(
+            temperature = this.temperature?.let { Temperature(it.value, it.unit.toTemperatureUnit()) },
+            humidity = this.humidity?.let { Humidity(Percentage(it)) },
+            luminosity = this.luminosity?.let { Luminosity(it.value, it.unit.toLuminosityUnit()) },
+            presence = this.presence?.let { Presence(it) },
+        )
+
+    private fun BuildingManagementDtoModel.TemperatureUnitResultDto.toTemperatureUnit(): TemperatureUnit = when (this) {
+        BuildingManagementDtoModel.TemperatureUnitResultDto.CELSIUS -> TemperatureUnit.CELSIUS
+    }
+
+    private fun BuildingManagementDtoModel.LuminosityUnitResultDto.toLuminosityUnit(): LightUnit = when (this) {
+        BuildingManagementDtoModel.LuminosityUnitResultDto.LUX -> LightUnit.LUX
     }
 }
