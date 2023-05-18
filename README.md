@@ -13,3 +13,9 @@
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=SmartOperatingBlock_surgery-report-microservice&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=SmartOperatingBlock_surgery-report-microservice)
 
 This is the repository of the Surgery Report microservice of the Smart Operating Block project.
+
+## Usage
+You need to specify the following environment variable:
+- `BUILDING_MANAGEMENT_MICROSERVICE_URL`: the url of the Building Management microservice
+- `PATIENT_MANAGEMENT_INTEGRATION_MICROSERVICE_URL`: the url of the Patient Management Integration microservice
+- `STAFF_TRACKING_MICROSERVICE_URL`: the url of the Staff Tracking microservice
