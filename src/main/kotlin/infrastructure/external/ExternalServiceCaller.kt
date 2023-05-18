@@ -54,9 +54,9 @@ class ExternalServiceCaller(engine: HttpClientEngine = OkHttp.create(), avoidChe
             checkNotNull(System.getenv(STAFF_TRACKING_URL)) { "Staff Tracking microservice url required" }
             checkNotNull(System.getenv(BUILDING_MANAGEMENT_URL)) { "Building Management microservice url required" }
         }
-        patientManagementIntegrationUrl = System.getenv(PATIENT_MANAGEMENT_URL) ?: ""
-        staffTrackingUrl = System.getenv(STAFF_TRACKING_URL) ?: ""
-        buildingManagement = System.getenv(BUILDING_MANAGEMENT_URL) ?: ""
+        patientManagementIntegrationUrl = System.getenv(PATIENT_MANAGEMENT_URL).orEmpty()
+        staffTrackingUrl = System.getenv(STAFF_TRACKING_URL).orEmpty()
+        buildingManagement = System.getenv(BUILDING_MANAGEMENT_URL).orEmpty()
     }
 
     private val httpClient = HttpClient(engine) {
