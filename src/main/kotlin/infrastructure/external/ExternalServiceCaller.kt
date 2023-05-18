@@ -23,6 +23,8 @@ import entity.room.RoomID
 import entity.tracking.TrackingInfo
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
+import io.ktor.client.engine.HttpClientEngine
+import io.ktor.client.engine.okhttp.OkHttp
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.client.request.get
 import io.ktor.http.HttpStatusCode
@@ -38,23 +40,33 @@ import java.time.Instant
  * The aim of this class is to provide the mean to access external microservices that have the data
  * needed by [HealthcareUserRepository].
  */
-class ExternalServiceCaller : HealthcareUserRepository, HealthProfessionalRepository, RoomRepository {
+class ExternalServiceCaller(engine: HttpClientEngine = OkHttp.create(), avoidCheckOnMicroserviceUrl: Boolean = false) :
+    HealthcareUserRepository, HealthProfessionalRepository, RoomRepository {
+    private val patientManagementIntegrationUrl: String
+    private val staffTrackingUrl: String
+    private val buildingManagement: String
+
     init {
-        checkNotNull(System.getenv(PATIENT_MANAGEMENT_URL)) {
-            "Patient Management Integration microservice url required"
+        if (!avoidCheckOnMicroserviceUrl) {
+            checkNotNull(System.getenv(PATIENT_MANAGEMENT_URL)) {
+                "Patient Management Integration microservice url required"
+            }
+            checkNotNull(System.getenv(STAFF_TRACKING_URL)) { "Staff Tracking microservice url required" }
+            checkNotNull(System.getenv(BUILDING_MANAGEMENT_URL)) { "Building Management microservice url required" }
         }
-        checkNotNull(System.getenv(STAFF_TRACKING_URL)) { "Staff Tracking microservice url required" }
-        checkNotNull(System.getenv(BUILDING_MANAGEMENT_URL)) { "Building Management microservice url required" }
+        patientManagementIntegrationUrl = System.getenv(PATIENT_MANAGEMENT_URL) ?: ""
+        staffTrackingUrl = System.getenv(STAFF_TRACKING_URL) ?: ""
+        buildingManagement = System.getenv(BUILDING_MANAGEMENT_URL) ?: ""
     }
 
-    private val httpClient = HttpClient() {
+    private val httpClient = HttpClient(engine) {
         install(ContentNegotiation) {
             json()
         }
     }
 
     override fun getHealthcareUser(taxCode: TaxCode): HealthcareUser? = runBlocking {
-        httpClient.get(System.getenv(PATIENT_MANAGEMENT_URL)) {
+        httpClient.get(this@ExternalServiceCaller.patientManagementIntegrationUrl) {
             url {
                 appendPathSegments("patients", taxCode.value)
             }
@@ -71,7 +83,7 @@ class ExternalServiceCaller : HealthcareUserRepository, HealthProfessionalReposi
         from: Instant,
         to: Instant,
     ): List<TrackingInfo<HealthProfessionalID>> = runBlocking {
-        httpClient.get(System.getenv(STAFF_TRACKING_URL)) {
+        httpClient.get(this@ExternalServiceCaller.staffTrackingUrl) {
             url {
                 appendPathSegments("rooms-tracking-data", roomID.value)
                 parameters.append("from", from.toString())
@@ -93,7 +105,7 @@ class ExternalServiceCaller : HealthcareUserRepository, HealthProfessionalReposi
         from: Instant,
         to: Instant,
     ): List<Pair<Instant, RoomEnvironmentalData>> = runBlocking {
-        httpClient.get(System.getenv(BUILDING_MANAGEMENT_URL)) {
+        httpClient.get(this@ExternalServiceCaller.buildingManagement) {
             url {
                 appendPathSegments("rooms", "data", roomID.value)
                 parameters.append("from", from.toString())
