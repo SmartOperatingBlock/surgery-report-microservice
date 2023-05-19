@@ -4,6 +4,7 @@ kotest = "5.6.2"
 ktor = "2.3.0"
 
 [libraries]
+archunit = { module = "com.tngtech.archunit:archunit-junit5", version = "1.0.1" }
 embedmongo = { module = "de.flapdoodle.embed:de.flapdoodle.embed.mongo", version = "4.6.3" }
 kmongo = { module = "org.litote.kmongo:kmongo-serialization", version = "4.9.0" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
@@ -19,6 +20,7 @@ ktor-content-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-j
 
 [bundles]
 kotlin-testing = [
+    "archunit",
     "kotest-junit5",
     "kotest-assertions-core",
     "kotest-assertions-core-jvm",
