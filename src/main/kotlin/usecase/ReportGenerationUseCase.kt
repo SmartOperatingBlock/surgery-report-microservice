@@ -14,7 +14,7 @@ import entity.healthprofessional.HealthProfessionalID
 import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
 import entity.process.SurgicalProcess
-import entity.process.SurgicalProcessState
+import entity.process.SurgicalProcessStep
 import entity.report.SurgeryProcessStepAggregateData
 import entity.report.SurgeryReport
 import entity.room.Room
@@ -47,9 +47,11 @@ class ReportGenerationUseCase(
     private val consumedImplantableMedicalDevices: Set<ImplantableMedicalDevice> = setOf(),
     private val medicalTechnologyUsage: Set<MedicalTechnologyUsage> = setOf(),
 ) : UseCase<SurgeryReport> {
+    private val surgicalProcessDates = GetSurgicalProcessStartEndUseCase(this.surgicalProcess).execute()
+
     override fun execute(): SurgeryReport = SurgeryReport(
         this.surgicalProcess.id,
-        Date.from(GetSurgicalProcessStartEndUseCase(this.surgicalProcess).execute().first),
+        Date.from(surgicalProcessDates.first),
         this.surgicalProcess.description,
         this.surgicalProcess.inChargeHealthProfessional,
         this.surgicalProcess.patientID,
@@ -64,15 +66,24 @@ class ReportGenerationUseCase(
         this.healthProfessionalTrackingInformation,
     )
 
-    private fun computeAggregateData(): Map<SurgicalProcessState, SurgeryProcessStepAggregateData> {
-        val stateSorted = this.surgicalProcess.processStates.sortedBy { it.first }
-        val finalDateIterator = stateSorted.map { it.first }.iterator()
+    private fun computeAggregateData(): Map<SurgicalProcessStep, SurgeryProcessStepAggregateData> {
+        // Get the steps sorted. We get only the states that have a non-null step to compute aggregate data within.
+        // For this reason interrupted and terminated don't figure out in the aggregate data, as there is no meaningful
+        // data to aggregate there.
+        val stepSorted = this.surgicalProcess.processStates.sortedBy { it.first }.mapNotNull { pair ->
+            pair.second.currentStep?.let { pair.first to it }
+        }
+        val finalDateIterator = stepSorted.map { it.first }.iterator()
         // the start date of the next step correspond to the end date of the previous one
         if (finalDateIterator.hasNext()) finalDateIterator.next()
 
-        return stateSorted.associate { stateEntry ->
+        return stepSorted.associate { stateEntry ->
             val dateTimeFrom = stateEntry.first
-            val dateTimeTo = if (finalDateIterator.hasNext()) finalDateIterator.next() else null
+            val dateTimeTo = if (finalDateIterator.hasNext()) {
+                finalDateIterator.next()
+            } else {
+                this.surgicalProcessDates.second
+            }
             val vitalSignsInPeriod = this.patientVitalSigns
                 .takePeriod(dateTimeFrom, dateTimeTo)
                 .map { pair -> pair.second }

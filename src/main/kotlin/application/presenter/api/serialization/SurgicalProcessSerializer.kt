@@ -8,8 +8,7 @@
 
 package application.presenter.api.serialization
 
-import application.presenter.api.model.process.SurgicalProcessStateStepApiDto
-import entity.process.SurgicalProcessState
+import application.presenter.api.model.process.SurgicalProcessStepApiDto
 import entity.process.SurgicalProcessStep
 
 /**
@@ -17,23 +16,14 @@ import entity.process.SurgicalProcessStep
  */
 object SurgicalProcessSerializer {
     /**
-     * Extension method to obtain the api dto of the surgical process state.
+     * Extension method to obtain the api dto of the surgical process step.
      */
-    fun SurgicalProcessState.toApiDto(): SurgicalProcessStateStepApiDto = when (this) {
-        SurgicalProcessState.PreSurgery(SurgicalProcessStep.PATIENT_IN_PREPARATION) ->
-            SurgicalProcessStateStepApiDto.PRE_SURGERY_PATIENT_IN_PREPARATION
-        SurgicalProcessState.Surgery(SurgicalProcessStep.PATIENT_ON_OPERATING_TABLE) ->
-            SurgicalProcessStateStepApiDto.SURGERY_PATIENT_ON_OPERATING_TABLE
-        SurgicalProcessState.Surgery(SurgicalProcessStep.ANESTHESIA) ->
-            SurgicalProcessStateStepApiDto.SURGERY_ANESTHESIA
-        SurgicalProcessState.Surgery(SurgicalProcessStep.SURGERY_IN_PROGRESS) ->
-            SurgicalProcessStateStepApiDto.SURGERY_SURGERY_IN_PROGRESS
-        SurgicalProcessState.Surgery(SurgicalProcessStep.END_OF_SURGERY) ->
-            SurgicalProcessStateStepApiDto.SURGERY_END_OF_SURGERY
-        SurgicalProcessState.PostSurgery(SurgicalProcessStep.PATIENT_UNDER_OBSERVATION) ->
-            SurgicalProcessStateStepApiDto.POST_SURGERY_PATIENT_UNDER_OBSERVATION
-        is SurgicalProcessState.Interrupted -> SurgicalProcessStateStepApiDto.INTERRUPTED
-        is SurgicalProcessState.Terminated -> SurgicalProcessStateStepApiDto.TERMINATED
-        else -> throw IllegalArgumentException("State not supported")
+    fun SurgicalProcessStep.toApiDto(): SurgicalProcessStepApiDto = when (this) {
+        SurgicalProcessStep.PATIENT_IN_PREPARATION -> SurgicalProcessStepApiDto.PATIENT_IN_PREPARATION
+        SurgicalProcessStep.PATIENT_ON_OPERATING_TABLE -> SurgicalProcessStepApiDto.PATIENT_ON_OPERATING_TABLE
+        SurgicalProcessStep.ANESTHESIA -> SurgicalProcessStepApiDto.ANESTHESIA
+        SurgicalProcessStep.SURGERY_IN_PROGRESS -> SurgicalProcessStepApiDto.SURGERY_IN_PROGRESS
+        SurgicalProcessStep.END_OF_SURGERY -> SurgicalProcessStepApiDto.END_OF_SURGERY
+        SurgicalProcessStep.PATIENT_UNDER_OBSERVATION -> SurgicalProcessStepApiDto.PATIENT_UNDER_OBSERVATION
     }
 }

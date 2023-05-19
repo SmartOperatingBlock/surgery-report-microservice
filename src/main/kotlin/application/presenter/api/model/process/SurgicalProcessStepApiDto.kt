@@ -14,28 +14,22 @@ import kotlinx.serialization.Serializable
  * Presenter enum class to represent the surgical process states and steps.
  */
 @Serializable
-enum class SurgicalProcessStateStepApiDto {
+enum class SurgicalProcessStepApiDto {
     /** Pre-surgery state - patient in preparation step. */
-    PRE_SURGERY_PATIENT_IN_PREPARATION,
+    PATIENT_IN_PREPARATION,
 
     /** Surgery state - patient on operating table step. */
-    SURGERY_PATIENT_ON_OPERATING_TABLE,
+    PATIENT_ON_OPERATING_TABLE,
 
     /** Surgery state - anesthesia step. */
-    SURGERY_ANESTHESIA,
+    ANESTHESIA,
 
     /** Surgery state - surgery in progress step. */
-    SURGERY_SURGERY_IN_PROGRESS,
+    SURGERY_IN_PROGRESS,
 
     /** Surgery state - end of surgery step. */
-    SURGERY_END_OF_SURGERY,
+    END_OF_SURGERY,
 
     /** Post-surgery state - patient under observation step. */
-    POST_SURGERY_PATIENT_UNDER_OBSERVATION,
-
-    /** Interrupted state. */
-    INTERRUPTED,
-
-    /** Terminated state. */
-    TERMINATED,
+    PATIENT_UNDER_OBSERVATION,
 }

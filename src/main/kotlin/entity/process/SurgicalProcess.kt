@@ -12,6 +12,8 @@ import entity.healthcareuser.PatientID
 import entity.healthcareuser.TaxCode
 import entity.healthprofessional.HealthProfessionalID
 import entity.room.RoomID
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
 import java.time.Instant
 
 /**
@@ -45,6 +47,7 @@ data class SurgicalProcess(
  * Identification of a [SurgicalProcess].
  * @param[value] the id.
  */
+@Serializable
 data class SurgicalProcessID(val value: String) {
     init {
         // Constructor validation: The id must not be empty
@@ -56,9 +59,10 @@ data class SurgicalProcessID(val value: String) {
  * The state of the [SurgicalProcess].
  * Each state is in a [currentStep] that must be supported.
  */
+@Serializable
 sealed class SurgicalProcessState(
-    private val currentStep: SurgicalProcessStep? = null,
-    supportedSteps: Set<SurgicalProcessStep> = setOf(),
+    val currentStep: SurgicalProcessStep? = null,
+    @Transient private val supportedSteps: Set<SurgicalProcessStep> = setOf(),
 ) {
 
     init {
@@ -66,14 +70,16 @@ sealed class SurgicalProcessState(
     }
 
     /** Pre-surgery state with the [currentStep]. */
-    data class PreSurgery(val currentStep: SurgicalProcessStep) : SurgicalProcessState(
-        currentStep,
+    @Serializable
+    data class PreSurgery(private val step: SurgicalProcessStep) : SurgicalProcessState(
+        step,
         setOf(SurgicalProcessStep.PATIENT_IN_PREPARATION),
     )
 
     /** Surgery state with the [currentStep]. */
-    data class Surgery(val currentStep: SurgicalProcessStep) : SurgicalProcessState(
-        currentStep,
+    @Serializable
+    data class Surgery(private val step: SurgicalProcessStep) : SurgicalProcessState(
+        step,
         setOf(
             SurgicalProcessStep.PATIENT_ON_OPERATING_TABLE,
             SurgicalProcessStep.ANESTHESIA,
@@ -83,21 +89,25 @@ sealed class SurgicalProcessState(
     )
 
     /** Post-surgery state with the [currentStep]. */
-    data class PostSurgery(val currentStep: SurgicalProcessStep) : SurgicalProcessState(
-        currentStep,
+    @Serializable
+    data class PostSurgery(private val step: SurgicalProcessStep) : SurgicalProcessState(
+        step,
         setOf(SurgicalProcessStep.PATIENT_UNDER_OBSERVATION),
     )
 
     /** Interrupted state. The surgery is interrupted */
+    @Serializable
     class Interrupted : SurgicalProcessState()
 
     /** Terminated state. The surgery is terminated. */
+    @Serializable
     class Terminated : SurgicalProcessState()
 }
 
 /**
  * The steps involved in a [SurgicalProcessState] during a [SurgicalProcess].
  */
+@Serializable
 enum class SurgicalProcessStep {
     /** The patient is in preparation. */
     PATIENT_IN_PREPARATION,

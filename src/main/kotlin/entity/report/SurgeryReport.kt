@@ -16,7 +16,7 @@ import entity.measurements.AggregateData
 import entity.medicaldevice.ImplantableMedicalDevice
 import entity.medicaldevice.MedicalTechnologyUsage
 import entity.process.SurgicalProcessID
-import entity.process.SurgicalProcessState
+import entity.process.SurgicalProcessStep
 import entity.room.Room
 import entity.room.RoomEnvironmentalData
 import entity.room.RoomType
@@ -34,7 +34,7 @@ import java.util.Date
  * - [patientID] the identification of the patient.
  * - [roomsInvolved] the rooms involved in the surgical process.
  * - [healthcareUser] if available, the information about the associated healthcare user.
- * - [statesData] aggregate data about the various steps in the surgery.
+ * - [stepData] aggregate data about the various steps in the surgery.
  * - [consumedImplantableMedicalDevices] the set of implantable medical device consumed during the surgery process.
  * - [medicalTechnologyUsageData] the usage of medical technology during the surgical process.
  * - [healthProfessionalTrackingInformation] the tracking information about the health professionals involved.
@@ -48,7 +48,7 @@ data class SurgeryReport(
     val patientID: PatientID,
     val roomsInvolved: Set<Room>,
     val healthcareUser: HealthcareUser?,
-    val statesData: Map<SurgicalProcessState, SurgeryProcessStepAggregateData>,
+    val stepData: Map<SurgicalProcessStep, SurgeryProcessStepAggregateData>,
     val consumedImplantableMedicalDevices: Set<ImplantableMedicalDevice>,
     val medicalTechnologyUsageData: Set<MedicalTechnologyUsage>,
     val healthProfessionalTrackingInformation: List<TrackingInfo<HealthProfessionalID>>,

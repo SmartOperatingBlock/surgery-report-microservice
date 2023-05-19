@@ -50,8 +50,8 @@ object SurgeryReportSerializer {
         patientID = this.patientID.value,
         roomsInvolved = this.roomsInvolved.map { it.toApiDto() },
         healthcareUser = this.healthcareUser?.toApiDto(),
-        statesData = this.statesData
-            .mapKeys { (state, _) -> state.toApiDto() }
+        stepData = this.stepData
+            .mapKeys { (step, _) -> step.toApiDto() }
             .mapValues { (_, data) -> data.toApiDto() },
         consumedImplantableMedicalDevice = this.consumedImplantableMedicalDevices.map { it.toApiDto() }.toSet(),
         medicalTechnologyUsageData = this.medicalTechnologyUsageData

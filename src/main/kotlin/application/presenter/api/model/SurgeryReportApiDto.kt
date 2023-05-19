@@ -13,7 +13,7 @@ import application.presenter.api.model.healthcareuser.PatientVitalSignsApiDto
 import application.presenter.api.model.measurements.AggregateDataApiDto
 import application.presenter.api.model.medicaldevice.ImplantableMedicalDeviceApiDto
 import application.presenter.api.model.medicaldevice.MedicalTechnologyApiDto
-import application.presenter.api.model.process.SurgicalProcessStateStepApiDto
+import application.presenter.api.model.process.SurgicalProcessStepApiDto
 import application.presenter.api.model.room.RoomApiDto
 import application.presenter.api.model.room.RoomApiDtoType
 import application.presenter.api.model.room.RoomEnvironmentalDataApiDto
@@ -38,7 +38,7 @@ data class SurgeryReportEntry(
 /**
  * It represents the presentation of a [entity.report.SurgeryReport].
  * The necessary information are: the [surgicalProcessID], the [surgeryDate], the [surgicalProcessDescription],
- * the [inChargeHealthProfessionalID], the [patientID], the [roomsInvolved], the [healthcareUser], the [statesData],
+ * the [inChargeHealthProfessionalID], the [patientID], the [roomsInvolved], the [healthcareUser], the [stepData],
  * the [consumedImplantableMedicalDevice], the [medicalTechnologyUsageData], the [healthProfessionalTrackingInformation]
  * and the [additionalData].
  */
@@ -51,7 +51,7 @@ data class SurgeryReportApiDto(
     val patientID: String,
     val roomsInvolved: List<RoomApiDto>,
     val healthcareUser: HealthcareUserApiDto?,
-    val statesData: Map<SurgicalProcessStateStepApiDto, SurgicalProcessStepAggregateDataApiDto>,
+    val stepData: Map<SurgicalProcessStepApiDto, SurgicalProcessStepAggregateDataApiDto>,
     val consumedImplantableMedicalDevice: Set<ImplantableMedicalDeviceApiDto>,
     val medicalTechnologyUsageData: Set<Pair<String, MedicalTechnologyApiDto>>,
     val healthProfessionalTrackingInformation: List<TrackingInformationApiDto>,
