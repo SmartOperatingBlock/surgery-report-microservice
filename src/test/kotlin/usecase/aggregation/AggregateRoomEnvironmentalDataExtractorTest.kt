@@ -17,7 +17,7 @@ import entity.room.RoomEnvironmentalData
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.doubles.plusOrMinus
 import io.kotest.matchers.shouldBe
-import usecase.SurgicalProcessData.listOfRoomEnvironmentalData
+import data.SurgicalProcessData.listOfRoomEnvironmentalData
 
 class AggregateRoomEnvironmentalDataExtractorTest : StringSpec({
     val average = RoomEnvironmentalData(

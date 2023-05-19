@@ -10,8 +10,8 @@ package usecase
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import usecase.SurgicalProcessData.simpleSurgicalProcess
-import usecase.SurgicalProcessData.simpleSurgicalProcessInterrupted
+import data.SurgicalProcessData.simpleSurgicalProcess
+import data.SurgicalProcessData.simpleSurgicalProcessInterrupted
 import java.time.Instant
 
 class GetSurgicalProcessStartEndDateTimeTest : StringSpec({

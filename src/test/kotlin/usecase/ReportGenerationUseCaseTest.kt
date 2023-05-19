@@ -10,7 +10,7 @@ package usecase
 
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import usecase.SurgicalProcessData.simpleSurgicalProcess
+import data.SurgicalProcessData.simpleSurgicalProcess
 import java.time.Instant
 import java.util.Date
 

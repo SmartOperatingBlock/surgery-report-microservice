@@ -6,7 +6,7 @@
  * https://opensource.org/licenses/MIT.
  */
 
-package usecase
+package data
 
 import entity.healthcareuser.PatientID
 import entity.healthcareuser.PatientVitalSigns
@@ -29,8 +29,8 @@ import java.time.Instant
  * Module that wraps some data about simple surgical processes.
  */
 object SurgicalProcessData {
-    val listOfPatientVitalSigns = listOf(
-        PatientVitalSigns(
+    val listOfTimedPatientVitalSigns = listOf(
+        Instant.parse("2020-10-03T08:10:50Z") to PatientVitalSigns(
             VitalSign.HeartBeat(60),
             VitalSign.DiastolicBloodPressure(100),
             VitalSign.SystolicBloodPressure(80),
@@ -38,7 +38,7 @@ object SurgicalProcessData {
             VitalSign.SaturationPercentage(Percentage(85.0)),
             VitalSign.BodyTemperature(Temperature(36.0)),
         ),
-        PatientVitalSigns(
+        Instant.parse("2020-10-03T08:17:55Z") to PatientVitalSigns(
             VitalSign.HeartBeat(50),
             VitalSign.DiastolicBloodPressure(150),
             VitalSign.SystolicBloodPressure(100),
@@ -46,7 +46,7 @@ object SurgicalProcessData {
             VitalSign.SaturationPercentage(Percentage(40.0)),
             VitalSign.BodyTemperature(Temperature(37.0)),
         ),
-        PatientVitalSigns(
+        Instant.parse("2020-10-03T08:19:00Z") to PatientVitalSigns(
             VitalSign.HeartBeat(100),
             VitalSign.DiastolicBloodPressure(115),
             VitalSign.SystolicBloodPressure(87),
@@ -56,26 +56,30 @@ object SurgicalProcessData {
         ),
     )
 
-    val listOfRoomEnvironmentalData = listOf(
-        RoomEnvironmentalData(
+    val listOfPatientVitalSigns = listOfTimedPatientVitalSigns.map { it.second }
+
+    val listOfTimedRoomEnvironmentalData = listOf(
+        Instant.parse("2020-10-03T08:11:50Z") to RoomEnvironmentalData(
             Temperature(30.0),
             Humidity(Percentage(50.0)),
             Luminosity(100.0),
             Presence(false),
         ),
-        RoomEnvironmentalData(
+        Instant.parse("2020-10-03T08:16:55Z") to RoomEnvironmentalData(
             Temperature(35.0),
             Humidity(Percentage(55.0)),
             Luminosity(150.0),
             Presence(true),
         ),
-        RoomEnvironmentalData(
+        Instant.parse("2020-10-03T08:25:00Z") to RoomEnvironmentalData(
             Temperature(32.0),
             Humidity(Percentage(80.0)),
             Luminosity(300.0),
             Presence(true),
         ),
     )
+
+    val listOfRoomEnvironmentalData = listOfTimedRoomEnvironmentalData.map { it.second }
 
     val simpleSurgicalProcess = SurgicalProcess(
         SurgicalProcessID("process"),
