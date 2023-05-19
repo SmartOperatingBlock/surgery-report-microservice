@@ -146,7 +146,7 @@ object SurgicalProcessData {
             Instant.parse("2020-10-03T08:15:45Z"),
         ),
         ImplantableMedicalDevice(
-            ImplantableMedicalDeviceID("implantable1"),
+            ImplantableMedicalDeviceID("implantable2"),
             ImplantableMedicalDeviceType.CATHETER,
             Instant.parse("2020-10-03T08:17:45Z"),
         ),
