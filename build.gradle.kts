@@ -18,9 +18,13 @@ group = "io.github.smartoperatingblock"
 
 repositories {
     mavenCentral()
+    maven {
+        url = uri("https://packages.confluent.io/maven")
+    }
 }
 
 dependencies {
+    implementation(libs.kafka.clients)
     implementation(libs.kmongo)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.serialization.json)
