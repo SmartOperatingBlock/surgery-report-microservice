@@ -21,9 +21,9 @@ class SurgicalProcessTest : StringSpec({
         SurgicalProcessID("sp1"),
         "type1",
         PatientID("p1"),
-        HealthProfessionalID("h1"),
         RoomID("preOp1"),
         RoomID("op1"),
+        HealthProfessionalID("h1"),
     )
     val surgicalProcessUpdated = surgicalProcess.copy(description = "description updated")
     val differentSurgicalProcess = surgicalProcess.copy(id = SurgicalProcessID("sp2"))

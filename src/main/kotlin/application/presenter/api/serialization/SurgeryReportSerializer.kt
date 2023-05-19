@@ -46,9 +46,9 @@ object SurgeryReportSerializer {
         surgicalProcessID = this.surgicalProcessID.value,
         surgeryDate = this.surgeryDate.toString(),
         surgicalProcessDescription = this.surgicalProcessDescription,
-        inChargeHealthProfessionalID = this.inChargeHealthProfessional.value,
         patientID = this.patientID.value,
         roomsInvolved = this.roomsInvolved.map { it.toApiDto() },
+        inChargeHealthProfessionalID = this.inChargeHealthProfessional?.value,
         healthcareUser = this.healthcareUser?.toApiDto(),
         stepData = this.stepData
             .mapKeys { (step, _) -> step.toApiDto() }

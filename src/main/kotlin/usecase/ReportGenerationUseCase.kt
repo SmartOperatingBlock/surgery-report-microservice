@@ -52,12 +52,12 @@ class ReportGenerationUseCase(
         this.surgicalProcess.id,
         surgicalProcessDates.first,
         this.surgicalProcess.description,
-        this.surgicalProcess.inChargeHealthProfessional,
         this.surgicalProcess.patientID,
         setOf(
             Room(surgicalProcess.preOperatingRoom, RoomType.PRE_OPERATING_ROOM),
             Room(surgicalProcess.operatingRoom, RoomType.OPERATING_ROOM),
         ),
+        this.surgicalProcess.inChargeHealthProfessional,
         this.healthcareUser,
         computeAggregateData(),
         this.consumedImplantableMedicalDevices,

@@ -94,9 +94,9 @@ object SurgicalProcessData {
         SurgicalProcessID("process"),
         "description",
         PatientID("patient"),
-        HealthProfessionalID("health professional"),
         RoomID("preOperatingRoom"),
         RoomID("operatingRoom"),
+        HealthProfessionalID("health professional"),
         taxCode = null,
         listOf(
             Pair(

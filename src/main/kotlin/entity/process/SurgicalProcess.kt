@@ -28,9 +28,9 @@ data class SurgicalProcess(
     val id: SurgicalProcessID,
     val description: String,
     val patientID: PatientID,
-    val inChargeHealthProfessional: HealthProfessionalID,
     val preOperatingRoom: RoomID,
     val operatingRoom: RoomID,
+    val inChargeHealthProfessional: HealthProfessionalID? = null,
     val taxCode: TaxCode? = null,
     val processStates: List<Pair<Instant, SurgicalProcessState>> = listOf(),
 ) {
