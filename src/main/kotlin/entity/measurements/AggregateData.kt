@@ -8,10 +8,13 @@
 
 package entity.measurements
 
+import kotlinx.serialization.Serializable
+
 /**
  * It describes aggregate data of type [E].
  * It stores the [average], the [std], the [maximum] and the [minimum].
  */
+@Serializable
 data class AggregateData<out E>(
     val average: E,
     val std: E,

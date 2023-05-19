@@ -12,11 +12,13 @@ import entity.measurements.Humidity
 import entity.measurements.Luminosity
 import entity.measurements.Presence
 import entity.measurements.Temperature
+import kotlinx.serialization.Serializable
 
 /**
  * It describes a room inside the Operating Block.
  * Each room has a [type] and is identified by an [id].
  */
+@Serializable
 data class Room(
     val id: RoomID,
     val type: RoomType,
@@ -34,6 +36,7 @@ data class Room(
  * Identification of a [Room].
  * @param[value] the id.
  */
+@Serializable
 data class RoomID(val value: String) {
     init {
         // Constructor validation: The id must not be empty
@@ -42,6 +45,7 @@ data class RoomID(val value: String) {
 }
 
 /** Describes the type of [Room]. */
+@Serializable
 enum class RoomType {
     /** It is the Pre/Post Operating Room. */
     PRE_OPERATING_ROOM,
@@ -59,6 +63,7 @@ enum class RoomType {
  * - the [presence] of someone in the room
  * All the data may be not present.
  */
+@Serializable
 data class RoomEnvironmentalData(
     val temperature: Temperature? = null,
     val humidity: Humidity? = null,

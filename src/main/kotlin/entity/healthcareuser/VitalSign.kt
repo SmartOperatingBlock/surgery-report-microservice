@@ -10,12 +10,14 @@ package entity.healthcareuser
 
 import entity.measurements.Percentage
 import entity.measurements.Temperature
+import kotlinx.serialization.Serializable
 
 /**
  * Module that wraps all the vital signs for a patient under surgery.
  */
 object VitalSign {
     /** The [bpm] of the patient. */
+    @Serializable
     data class HeartBeat(val bpm: Int) {
         init {
             require(this.bpm >= 0) {
@@ -25,6 +27,7 @@ object VitalSign {
     }
 
     /** The Diastolic blood [pressure] of the patient. */
+    @Serializable
     data class DiastolicBloodPressure(val pressure: Int) {
         init {
             require(this.pressure >= 0) {
@@ -34,6 +37,7 @@ object VitalSign {
     }
 
     /** The Systolic blood [pressure] of the patient. */
+    @Serializable
     data class SystolicBloodPressure(val pressure: Int) {
         init {
             require(this.pressure >= 0) {
@@ -43,6 +47,7 @@ object VitalSign {
     }
 
     /** The Respiratory [rate] of the patient. */
+    @Serializable
     data class RespiratoryRate(val rate: Int) {
         init {
             require(this.rate >= 0) {
@@ -52,9 +57,11 @@ object VitalSign {
     }
 
     /** The Saturation [percentage] of the patient. */
+    @Serializable
     data class SaturationPercentage(val percentage: Percentage)
 
     /** The body [temperature] of the patient. */
+    @Serializable
     data class BodyTemperature(val temperature: Temperature) {
         init {
             require(this.temperature.value >= 0) {

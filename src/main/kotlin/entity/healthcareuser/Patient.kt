@@ -8,10 +8,13 @@
 
 package entity.healthcareuser
 
+import kotlinx.serialization.Serializable
+
 /**
  * Id of [HealthcareUser] under a surgery.
  * @param[value] the id.
  */
+@Serializable
 data class PatientID(val value: String) {
     init {
         // Constructor validation: The id must not be empty
@@ -28,6 +31,7 @@ data class PatientID(val value: String) {
  * - [saturationPercentage]
  * - [bodyTemperature]
  */
+@Serializable
 data class PatientVitalSigns(
     val heartBeat: VitalSign.HeartBeat? = null,
     val diastolicBloodPressure: VitalSign.DiastolicBloodPressure? = null,

@@ -8,10 +8,13 @@
 
 package entity.healthcareuser
 
+import kotlinx.serialization.Serializable
+
 /**
  * It represents a Healthcare user of the Healthcare national system.
  * Each user is identified by their [taxCode] and has a [name] and a [surname].
  */
+@Serializable
 data class HealthcareUser(
     val taxCode: TaxCode,
     val name: String,
@@ -30,6 +33,7 @@ data class HealthcareUser(
  * Tax Code of a [HealthcareUser].
  * @param[value] the tax code.
  */
+@Serializable
 data class TaxCode(val value: String) {
     init {
         // Constructor validation: the code must not be empty

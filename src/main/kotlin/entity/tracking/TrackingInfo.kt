@@ -9,6 +9,8 @@
 package entity.tracking
 
 import entity.room.RoomID
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import java.time.Instant
 
 /**
@@ -16,14 +18,16 @@ import java.time.Instant
  * It is interested to know the [dateTime] of the tracking information and the
  * [roomID] where it performs the action described in the [trackType].
  */
+@Serializable
 data class TrackingInfo<out I>(
-    val dateTime: Instant,
+    @Contextual val dateTime: Instant,
     val individual: I,
     val roomID: RoomID,
     val trackType: TrackType,
 )
 
 /** It describes the possible track information. */
+@Serializable
 enum class TrackType {
     /** Enter a room. */
     ENTER,

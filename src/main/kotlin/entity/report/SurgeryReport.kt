@@ -21,6 +21,8 @@ import entity.room.Room
 import entity.room.RoomEnvironmentalData
 import entity.room.RoomType
 import entity.tracking.TrackingInfo
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import java.time.Instant
 import java.util.Date
 
@@ -40,9 +42,10 @@ import java.util.Date
  * - [healthProfessionalTrackingInformation] the tracking information about the health professionals involved.
  * - [additionalData] additional data provided manually by the health professionals.
  */
+@Serializable
 data class SurgeryReport(
     val surgicalProcessID: SurgicalProcessID,
-    val surgeryDate: Date,
+    @Contextual val surgeryDate: Date,
     val surgicalProcessDescription: String,
     val inChargeHealthProfessional: HealthProfessionalID,
     val patientID: PatientID,
@@ -68,9 +71,10 @@ data class SurgeryReport(
  * It contains the [startDateTime] and the [stopDateTime] of the step, the [patientVitalSignsAggregateData]
  * and the [environmentalAggregateData].
  */
+@Serializable
 data class SurgeryProcessStepAggregateData(
-    val startDateTime: Instant,
-    val stopDateTime: Instant?,
+    @Contextual val startDateTime: Instant,
+    @Contextual val stopDateTime: Instant?,
     val patientVitalSignsAggregateData: AggregateData<PatientVitalSigns>,
     val environmentalAggregateData: Map<RoomType, AggregateData<RoomEnvironmentalData>>,
 )

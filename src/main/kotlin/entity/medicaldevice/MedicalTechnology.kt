@@ -8,6 +8,8 @@
 
 package entity.medicaldevice
 
+import kotlinx.serialization.Contextual
+import kotlinx.serialization.Serializable
 import java.time.Instant
 
 /**
@@ -16,6 +18,7 @@ import java.time.Instant
  * a [description].
  * The technology can be [inUse] inside the Operating Room.
  */
+@Serializable
 data class MedicalTechnology(
     val id: MedicalTechnologyID,
     val name: String,
@@ -36,6 +39,7 @@ data class MedicalTechnology(
  * Identification of [MedicalTechnology].
  * @param[value] the id.
  */
+@Serializable
 data class MedicalTechnologyID(val value: String) {
     init {
         // Constructor validation: the id must not be empty
@@ -44,6 +48,7 @@ data class MedicalTechnologyID(val value: String) {
 }
 
 /** The types of [MedicalTechnology]. */
+@Serializable
 enum class MedicalTechnologyType {
     /** Endoscope technology. */
     ENDOSCOPE,
@@ -52,4 +57,4 @@ enum class MedicalTechnologyType {
     XRAY,
 }
 
-typealias MedicalTechnologyUsage = Pair<Instant, MedicalTechnology>
+typealias MedicalTechnologyUsage = Pair<@Contextual Instant, MedicalTechnology>

@@ -8,10 +8,13 @@
 
 package entity.healthprofessional
 
+import kotlinx.serialization.Serializable
+
 /**
  * Identification of a health professional working withing the Operating Block.
  * @param[value] the id.
  */
+@Serializable
 data class HealthProfessionalID(val value: String) {
     init {
         // Constructor validation: the id must not be empty

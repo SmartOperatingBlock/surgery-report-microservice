@@ -8,15 +8,19 @@
 
 package entity.measurements
 
+import kotlinx.serialization.Serializable
+
 /**
  * Temperature concept.
  * It is described by the current temperature [value] expressed in a [unit].
  */
+@Serializable
 data class Temperature(val value: Double, val unit: TemperatureUnit = TemperatureUnit.CELSIUS)
 
 /**
  * This enum describe the possible [Temperature] unit of measurement.
  */
+@Serializable
 enum class TemperatureUnit {
     /**
      * Celsius unit.
@@ -29,6 +33,7 @@ enum class TemperatureUnit {
  * It represents a generic percentage.
  * Therefore, its [value] must be within 0 and 100.
  */
+@Serializable
 data class Percentage(val value: Double) {
     init {
         // Constructor validation
@@ -40,12 +45,14 @@ data class Percentage(val value: Double) {
  * Humidity concept.
  * It is described by the current [percentage] of humidity. So it describes the Relative Humidity.
  */
+@Serializable
 data class Humidity(val percentage: Percentage)
 
 /**
  * Luminosity concept.
  * It is described by the current luminosity [value] expressed in a [unit].
  */
+@Serializable
 data class Luminosity(val value: Double, val unit: LightUnit = LightUnit.LUX) {
     init {
         // Constructor validation
@@ -56,6 +63,7 @@ data class Luminosity(val value: Double, val unit: LightUnit = LightUnit.LUX) {
 /**
  * This enum describe the possible [Luminosity] unit of measurement.
  */
+@Serializable
 enum class LightUnit {
     /**
      * Lux unit.
@@ -67,4 +75,5 @@ enum class LightUnit {
  * Describe the presence inside a room.
  * @param[presenceDetected] true if someone is in the room, false otherwise.
  */
+@Serializable
 data class Presence(val presenceDetected: Boolean)
