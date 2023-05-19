@@ -35,7 +35,7 @@ object SurgeryReportSerializer {
         patientName = this.healthcareUser?.name,
         patientSurname = this.healthcareUser?.surname,
         surgicalProcessDescription = this.surgicalProcessDescription,
-        surgeryDate = this.surgeryDate.toInstant().toString(),
+        surgeryDate = this.surgeryDate.toString(),
     )
 
     /**
@@ -44,7 +44,7 @@ object SurgeryReportSerializer {
      */
     fun SurgeryReport.toApiDto(): SurgeryReportApiDto = SurgeryReportApiDto(
         surgicalProcessID = this.surgicalProcessID.value,
-        surgeryDate = this.surgeryDate.toInstant().toString(),
+        surgeryDate = this.surgeryDate.toString(),
         surgicalProcessDescription = this.surgicalProcessDescription,
         inChargeHealthProfessionalID = this.inChargeHealthProfessional.value,
         patientID = this.patientID.value,

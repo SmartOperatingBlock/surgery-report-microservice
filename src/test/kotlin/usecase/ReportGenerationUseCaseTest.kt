@@ -12,7 +12,6 @@ import data.SurgicalProcessData.simpleSurgicalProcess
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.time.Instant
-import java.util.Date
 
 /*
     Here will be tested only the internal logic of the use case.
@@ -29,7 +28,7 @@ class ReportGenerationUseCaseTest : StringSpec({
     val patientInPreparationInstant = Instant.parse("2020-10-03T08:10:00Z")
 
     "The surgery date should correspond to the start instant in which the patient goes in preparation" {
-        surgeryReport.surgeryDate shouldBe Date.from(patientInPreparationInstant)
+        surgeryReport.surgeryDate shouldBe patientInPreparationInstant
     }
 
     "Date of start and end of each surgical process step must be respected in the aggregate data" {

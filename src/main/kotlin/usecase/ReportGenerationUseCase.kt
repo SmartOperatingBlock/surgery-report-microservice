@@ -25,7 +25,6 @@ import usecase.aggregation.AggregateRoomEnvironmentalDataExtractor
 import usecase.aggregation.AggregateVitalSignsExtractor
 import usecase.aggregation.util.CollectionExtensions.takePeriod
 import java.time.Instant
-import java.util.Date
 
 /**
  * This use case has the objective of generate the [SurgeryReport] based on the information of the
@@ -51,7 +50,7 @@ class ReportGenerationUseCase(
 
     override fun execute(): SurgeryReport = SurgeryReport(
         this.surgicalProcess.id,
-        Date.from(surgicalProcessDates.first),
+        surgicalProcessDates.first,
         this.surgicalProcess.description,
         this.surgicalProcess.inChargeHealthProfessional,
         this.surgicalProcess.patientID,

@@ -24,7 +24,6 @@ import entity.tracking.TrackingInfo
 import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
 import java.time.Instant
-import java.util.Date
 
 /**
  * It describes the surgery report, so the final product to be delivered to the user.
@@ -45,7 +44,7 @@ import java.util.Date
 @Serializable
 data class SurgeryReport(
     val surgicalProcessID: SurgicalProcessID,
-    @Contextual val surgeryDate: Date,
+    @Contextual val surgeryDate: Instant,
     val surgicalProcessDescription: String,
     val inChargeHealthProfessional: HealthProfessionalID,
     val patientID: PatientID,
