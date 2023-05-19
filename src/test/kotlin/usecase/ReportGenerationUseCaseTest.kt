@@ -8,9 +8,9 @@
 
 package usecase
 
+import data.SurgicalProcessData.simpleSurgicalProcess
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import data.SurgicalProcessData.simpleSurgicalProcess
 import java.time.Instant
 import java.util.Date
 
@@ -33,15 +33,16 @@ class ReportGenerationUseCaseTest : StringSpec({
     }
 
     "Date of start and end of each surgical process step must be respected in the aggregate data" {
-        val processState = simpleSurgicalProcess.processStates.map { it.second }.iterator()
-        val startDates = simpleSurgicalProcess.processStates.map { it.first }.iterator()
+        val stateToConsider = simpleSurgicalProcess.processStates.filter { it.second.currentStep != null }
+        val processStep = stateToConsider.mapNotNull { it.second.currentStep }.iterator()
+        val startDates = stateToConsider.map { it.first }.iterator()
         val stopDates = simpleSurgicalProcess
             .processStates
             .map { it.first }
             .subList(1, simpleSurgicalProcess.processStates.size)
             .iterator()
-        surgeryReport.statesData.forEach { (state, data) ->
-            state shouldBe processState.next()
+        surgeryReport.stepData.forEach { (state, data) ->
+            state shouldBe processStep.next()
             data.startDateTime shouldBe startDates.next()
             data.stopDateTime?.run { this shouldBe stopDates.next() }
         }
