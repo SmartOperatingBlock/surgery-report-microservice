@@ -17,5 +17,6 @@ This is the repository of the Surgery Report microservice of the Smart Operating
 ## Usage
 You need to specify the following environment variable:
 - `BUILDING_MANAGEMENT_MICROSERVICE_URL`: the url of the Building Management microservice
+- `MONGODB_CONNECTION_STRING`: the mongodb's connection string
 - `PATIENT_MANAGEMENT_INTEGRATION_MICROSERVICE_URL`: the url of the Patient Management Integration microservice
 - `STAFF_TRACKING_MICROSERVICE_URL`: the url of the Staff Tracking microservice
