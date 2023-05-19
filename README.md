@@ -16,7 +16,9 @@ This is the repository of the Surgery Report microservice of the Smart Operating
 
 ## Usage
 You need to specify the following environment variable:
+- `BOOTSTRAP_SERVER_URL`: the kafka connection endpoint
 - `BUILDING_MANAGEMENT_MICROSERVICE_URL`: the url of the Building Management microservice
 - `MONGODB_CONNECTION_STRING`: the mongodb's connection string
 - `PATIENT_MANAGEMENT_INTEGRATION_MICROSERVICE_URL`: the url of the Patient Management Integration microservice
+- `SCHEMA_REGISTRY_URL`: the kafka schema registry url
 - `STAFF_TRACKING_MICROSERVICE_URL`: the url of the Staff Tracking microservice
