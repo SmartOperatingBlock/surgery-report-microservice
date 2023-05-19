@@ -4,6 +4,8 @@ kotest = "5.6.2"
 ktor = "2.3.0"
 
 [libraries]
+embedmongo = { module = "de.flapdoodle.embed:de.flapdoodle.embed.mongo", version = "4.6.3" }
+kmongo = { module = "org.litote.kmongo:kmongo-serialization", version = "4.9.0" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
@@ -16,7 +18,13 @@ ktor-client-mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 ktor-content-negotiation-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 [bundles]
-kotlin-testing = ["kotest-junit5", "kotest-assertions-core", "kotest-assertions-core-jvm", "ktor-client-mock"]
+kotlin-testing = [
+    "kotest-junit5",
+    "kotest-assertions-core",
+    "kotest-assertions-core-jvm",
+    "ktor-client-mock",
+    "embedmongo",
+]
 
 [plugins]
 dokka = { id ="org.jetbrains.dokka", version = "1.8.10" }

@@ -21,6 +21,7 @@ repositories {
 }
 
 dependencies {
+    implementation(libs.kmongo)
     implementation(libs.kotlin.stdlib)
     implementation(libs.kotlin.serialization.json)
     implementation(libs.ktor.client.content.negotiation)
