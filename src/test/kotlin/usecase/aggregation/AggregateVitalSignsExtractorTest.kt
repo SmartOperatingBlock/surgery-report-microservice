@@ -8,6 +8,7 @@
 
 package usecase.aggregation
 
+import data.SurgicalProcessData.listOfPatientVitalSigns
 import entity.healthcareuser.PatientVitalSigns
 import entity.healthcareuser.VitalSign
 import entity.measurements.AggregateData
@@ -16,7 +17,6 @@ import entity.measurements.Temperature
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.doubles.plusOrMinus
 import io.kotest.matchers.shouldBe
-import data.SurgicalProcessData.listOfPatientVitalSigns
 
 class AggregateVitalSignsExtractorTest : StringSpec({
     val average = PatientVitalSigns(
