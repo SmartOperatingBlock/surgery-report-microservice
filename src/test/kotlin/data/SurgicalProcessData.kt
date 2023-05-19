@@ -17,12 +17,21 @@ import entity.measurements.Luminosity
 import entity.measurements.Percentage
 import entity.measurements.Presence
 import entity.measurements.Temperature
+import entity.medicaldevice.ImplantableMedicalDevice
+import entity.medicaldevice.ImplantableMedicalDeviceID
+import entity.medicaldevice.ImplantableMedicalDeviceType
+import entity.medicaldevice.MedicalTechnology
+import entity.medicaldevice.MedicalTechnologyID
+import entity.medicaldevice.MedicalTechnologyType
+import entity.medicaldevice.MedicalTechnologyUsage
 import entity.process.SurgicalProcess
 import entity.process.SurgicalProcessID
 import entity.process.SurgicalProcessState
 import entity.process.SurgicalProcessStep
 import entity.room.RoomEnvironmentalData
 import entity.room.RoomID
+import entity.tracking.TrackType
+import entity.tracking.TrackingInfo
 import java.time.Instant
 
 /**
@@ -86,8 +95,8 @@ object SurgicalProcessData {
         "description",
         PatientID("patient"),
         HealthProfessionalID("health professional"),
-        RoomID("room1"),
-        RoomID("room2"),
+        RoomID("preOperatingRoom"),
+        RoomID("operatingRoom"),
         taxCode = null,
         listOf(
             Pair(
@@ -127,6 +136,89 @@ object SurgicalProcessData {
                 Instant.parse("2020-10-03T08:25:00Z"),
                 SurgicalProcessState.Interrupted(),
             ),
+        ),
+    )
+
+    val sampleConsumedImplantableMedicalDevices = setOf(
+        ImplantableMedicalDevice(
+            ImplantableMedicalDeviceID("implantable1"),
+            ImplantableMedicalDeviceType.PACEMAKER,
+            Instant.parse("2020-10-03T08:15:45Z"),
+        ),
+        ImplantableMedicalDevice(
+            ImplantableMedicalDeviceID("implantable1"),
+            ImplantableMedicalDeviceType.CATHETER,
+            Instant.parse("2020-10-03T08:17:45Z"),
+        ),
+    )
+
+    val sampleMedicalTechnologyUsage = setOf(
+        MedicalTechnologyUsage(
+            Instant.parse("2020-10-03T08:16:45Z"),
+            MedicalTechnology(
+                MedicalTechnologyID("tech1"),
+                "Medical Technology 1",
+                "Description of medical technology",
+                MedicalTechnologyType.ENDOSCOPE,
+                inUse = true,
+            ),
+        ),
+        MedicalTechnologyUsage(
+            Instant.parse("2020-10-03T08:17:45Z"),
+            MedicalTechnology(
+                MedicalTechnologyID("tech1"),
+                "Medical Technology 1",
+                "Description of medical technology",
+                MedicalTechnologyType.ENDOSCOPE,
+                inUse = false,
+            ),
+        ),
+        MedicalTechnologyUsage(
+            Instant.parse("2020-10-03T08:17:45Z"),
+            MedicalTechnology(
+                MedicalTechnologyID("tech2"),
+                "Medical Technology 2",
+                "Description of medical technology",
+                MedicalTechnologyType.XRAY,
+                inUse = true,
+            ),
+        ),
+        MedicalTechnologyUsage(
+            Instant.parse("2020-10-03T08:18:00Z"),
+            MedicalTechnology(
+                MedicalTechnologyID("tech2"),
+                "Medical Technology 2",
+                "Description of medical technology",
+                MedicalTechnologyType.XRAY,
+                inUse = false,
+            ),
+        ),
+    )
+
+    val listOfhealthProfessionalTrackingData = listOf(
+        TrackingInfo(
+            Instant.parse("2020-10-03T08:10:00Z"),
+            HealthProfessionalID("hp0"),
+            RoomID("preOperatingRoom"),
+            TrackType.ENTER,
+        ),
+        TrackingInfo(
+            Instant.parse("2020-10-03T08:10:00Z"),
+            HealthProfessionalID("hp1"),
+            RoomID("operatingRoom"),
+            TrackType.ENTER,
+        ),
+        TrackingInfo(
+            Instant.parse("2020-10-03T08:15:00Z"),
+            HealthProfessionalID("hp2"),
+            RoomID("operatingRoom"),
+            TrackType.ENTER,
+        ),
+        TrackingInfo(
+            Instant.parse("2020-10-03T08:18:00Z"),
+            HealthProfessionalID("hp2"),
+            RoomID("operatingRoom"),
+            TrackType.EXIT,
         ),
     )
 }
