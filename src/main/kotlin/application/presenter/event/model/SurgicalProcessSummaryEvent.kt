@@ -18,4 +18,9 @@ data class SurgicalProcessSummaryEvent(
     override val key: String,
     override val data: SurgicalProcessSummaryPayload,
     override val dateTime: String,
-) : Event<SurgicalProcessSummaryPayload>
+) : Event<SurgicalProcessSummaryPayload> {
+    companion object {
+        /** Surgical Process summary event key. */
+        const val SURGICAL_PROCESS_SUMMARY_EVENT_KEY = "SURGERY_REPORT_EVENT"
+    }
+}
