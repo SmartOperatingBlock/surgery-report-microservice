@@ -32,6 +32,9 @@ dependencies {
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.engine.okhttp)
     implementation(libs.ktor.content.negotiation.json)
+    implementation(libs.ktor.server.core)
+    implementation(libs.ktor.server.content.negotiation)
+    implementation(libs.ktor.server.engine.netty)
     testImplementation(libs.bundles.kotlin.testing)
 }
 
