@@ -35,6 +35,7 @@ object SurgeryReportService {
      * It needs the [patientVitalSigns], the [consumedImplantableMedicalDevices], the [medicalTechnologyUsage].
      * It reaches the goal by orchestrating the [surgeryReportRepository], the [healthProfessionalRepository],
      * the [healthcareUserRepository] and the [roomRepository].
+     * If a [SurgeryReport] with the same [SurgicalProcessID] exists, then it returns null.
      */
     class GenerateSurgeryReport(
         private val surgicalProcess: SurgicalProcess,
@@ -47,24 +48,28 @@ object SurgeryReportService {
         private val healthcareUserRepository: HealthcareUserRepository,
     ) : ApplicationService<SurgeryReport?> {
         override fun execute(): SurgeryReport? =
-            with(GetSurgicalProcessStartEndUseCase(this.surgicalProcess).execute()) {
-                val surgeryReport = ReportGenerationUseCase(
-                    surgicalProcess,
-                    patientVitalSigns,
-                    listOf(surgicalProcess.preOperatingRoom, surgicalProcess.operatingRoom).flatMap {
-                        healthProfessionalRepository.getHealthProfessionalTrackingInfo(it, this.first, this.second)
-                    },
-                    listOf(
-                        surgicalProcess.preOperatingRoom to RoomType.PRE_OPERATING_ROOM,
-                        surgicalProcess.operatingRoom to RoomType.OPERATING_ROOM,
-                    ).associate {
-                        Pair(it.second, roomRepository.getRoomEnvironmentalData(it.first, this.first, this.second))
-                    },
-                    surgicalProcess.taxCode?.let { healthcareUserRepository.getHealthcareUser(it) },
-                    consumedImplantableMedicalDevices,
-                    medicalTechnologyUsage,
-                ).execute()
-                if (surgeryReportRepository.createSurgeryReport(surgeryReport)) surgeryReport else null
+            if (this.surgeryReportRepository.findBy(surgicalProcess.id) == null) {
+                with(GetSurgicalProcessStartEndUseCase(this.surgicalProcess).execute()) {
+                    val surgeryReport = ReportGenerationUseCase(
+                        surgicalProcess,
+                        patientVitalSigns,
+                        listOf(surgicalProcess.preOperatingRoom, surgicalProcess.operatingRoom).flatMap {
+                            healthProfessionalRepository.getHealthProfessionalTrackingInfo(it, this.first, this.second)
+                        },
+                        listOf(
+                            surgicalProcess.preOperatingRoom to RoomType.PRE_OPERATING_ROOM,
+                            surgicalProcess.operatingRoom to RoomType.OPERATING_ROOM,
+                        ).associate {
+                            Pair(it.second, roomRepository.getRoomEnvironmentalData(it.first, this.first, this.second))
+                        },
+                        surgicalProcess.taxCode?.let { healthcareUserRepository.getHealthcareUser(it) },
+                        consumedImplantableMedicalDevices,
+                        medicalTechnologyUsage,
+                    ).execute()
+                    if (surgeryReportRepository.createSurgeryReport(surgeryReport)) surgeryReport else null
+                }
+            } else {
+                null
             }
     }
 
