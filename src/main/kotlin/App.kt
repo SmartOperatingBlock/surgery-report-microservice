@@ -1,3 +1,7 @@
+import infrastructure.database.SurgeryReportDatabase
+import infrastructure.events.KafkaClient
+import infrastructure.external.ExternalServiceCaller
+
 /*
  * Copyright (c) 2023. Smart Operating Block
  *
@@ -10,5 +14,12 @@
  * Template for kotlin projects.
  */
 fun main() {
-    println("Hello World from Kotlin Template")
+    val surgeryReportRepository = SurgeryReportDatabase()
+    val externalServiceCaller = ExternalServiceCaller()
+    KafkaClient(
+        surgeryReportRepository,
+        externalServiceCaller,
+        externalServiceCaller,
+        externalServiceCaller,
+    ).start()
 }
