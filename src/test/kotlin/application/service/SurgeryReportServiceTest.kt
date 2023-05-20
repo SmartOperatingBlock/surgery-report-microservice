@@ -11,27 +11,18 @@ package application.service
 import application.presenter.api.serialization.SurgeryReportSerializer.toSurgeryReportEntry
 import data.SurgeryReportData.simpleCompleteSurgeryReport
 import data.SurgicalProcessData.listOfTimedPatientVitalSigns
-import data.SurgicalProcessData.listOfTimedRoomEnvironmentalData
-import data.SurgicalProcessData.listOfhealthProfessionalTrackingData
 import data.SurgicalProcessData.sampleConsumedImplantableMedicalDevices
 import data.SurgicalProcessData.sampleMedicalTechnologyUsage
 import data.SurgicalProcessData.simpleSurgicalProcess
-import entity.healthcareuser.HealthcareUser
 import infrastructure.database.SurgeryReportDatabase
 import infrastructure.database.withMongo
+import infrastructure.external.testdouble.RepositoryTestDoubles.healthProfessionalRepository
+import infrastructure.external.testdouble.RepositoryTestDoubles.healthcareUserRepository
+import infrastructure.external.testdouble.RepositoryTestDoubles.roomRepository
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
-import usecase.repository.HealthProfessionalRepository
-import usecase.repository.HealthcareUserRepository
-import usecase.repository.RoomRepository
 
 class SurgeryReportServiceTest : StringSpec({
-    val healthProfessionalRepository = HealthProfessionalRepository { _, _, _ -> listOfhealthProfessionalTrackingData }
-    val roomRepository = RoomRepository { _, _, _ -> listOfTimedRoomEnvironmentalData }
-    val healthcareUserRepository = HealthcareUserRepository { _ ->
-        simpleSurgicalProcess.taxCode?.let { HealthcareUser(it, "Mario", "Rossi") }
-    }
-
     fun getDatabase() = SurgeryReportDatabase("mongodb://localhost:27017")
 
     fun generateSurgeryReport() = SurgeryReportService.GenerateSurgeryReport(
