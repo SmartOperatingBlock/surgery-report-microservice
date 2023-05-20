@@ -45,7 +45,9 @@ private fun Route.getAllSurgeryReportEntriesRoute(
 ) = get("$apiPath/reports") {
     val entries = SurgeryReportService.GetAllSurgeryReportEntry(surgeryReportRepository)
         .execute()
-        .map { ApiResponses.ResponseEntry(it, "http://localhost:$port$apiPath/reports/${it.surgicalProcessID}") }
+        .map { entry ->
+            ApiResponses.ResponseEntry(entry, "http://localhost:$port$apiPath/reports/${entry.surgicalProcessID}")
+        }
     call.response.status(if (entries.isNotEmpty()) HttpStatusCode.OK else HttpStatusCode.NoContent)
     call.respond(ApiResponses.ResponseEntryList(entries, entries.size))
 }
