@@ -8,6 +8,7 @@
 
 package infrastructure.api
 
+import application.presenter.api.model.SurgeryReportPatchApiDto
 import application.presenter.api.model.apiresponse.ApiResponses
 import application.presenter.api.serialization.SurgeryReportSerializer.toApiDto
 import application.service.SurgeryReportService
@@ -15,9 +16,11 @@ import entity.process.SurgicalProcessID
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
+import io.ktor.server.request.receive
 import io.ktor.server.response.respond
 import io.ktor.server.routing.Route
 import io.ktor.server.routing.get
+import io.ktor.server.routing.patch
 import io.ktor.server.routing.routing
 import usecase.repository.SurgeryReportRepository
 
@@ -31,6 +34,7 @@ fun Application.surgeryReportAPI(apiPath: String, port: Int, surgeryReportReposi
     routing {
         getAllSurgeryReportEntriesRoute(apiPath, port, surgeryReportRepository)
         getSurgeryReportRoute(apiPath, surgeryReportRepository)
+        integrateSurgeryReportRoute(apiPath, surgeryReportRepository)
     }
 }
 
@@ -57,4 +61,17 @@ private fun Route.getSurgeryReportRoute(apiPath: String, surgeryReportRepository
                 else -> call.respond(this.toApiDto())
             }
         }
+    }
+
+private fun Route.integrateSurgeryReportRoute(apiPath: String, surgeryReportRepository: SurgeryReportRepository) =
+    patch("$apiPath/reports/{surgicalProcessId}") {
+        call.respond(
+            SurgeryReportService.IntegrateSurgeryReport(
+                SurgicalProcessID(call.parameters["surgicalProcessId"].orEmpty()),
+                call.receive<SurgeryReportPatchApiDto>().additionalData,
+                surgeryReportRepository,
+            ).execute().let { result ->
+                if (result) HttpStatusCode.NoContent else HttpStatusCode.NotFound
+            },
+        )
     }
