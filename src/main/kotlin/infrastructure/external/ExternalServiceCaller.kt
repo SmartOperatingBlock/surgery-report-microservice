@@ -8,7 +8,7 @@
 
 package infrastructure.external
 
-import application.presenter.external.model.ApiResponses
+import application.presenter.api.model.apiresponse.ApiResponses
 import application.presenter.external.model.BuildingManagementDtoModel
 import application.presenter.external.model.PatientManagementIntegrationDtoModel
 import application.presenter.external.model.StaffTrackingDtoModel

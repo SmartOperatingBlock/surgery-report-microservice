@@ -6,7 +6,7 @@
  * https://opensource.org/licenses/MIT.
  */
 
-package application.presenter.external.model
+package application.presenter.api.model.apiresponse
 
 import kotlinx.serialization.Serializable
 
