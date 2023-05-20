@@ -69,3 +69,9 @@ data class SurgicalProcessStepAggregateDataApiDto(
     val patientVitalSignAggregateData: AggregateDataApiDto<PatientVitalSignsApiDto>,
     val environmentalAggregateData: Map<RoomApiDtoType, AggregateDataApiDto<RoomEnvironmentalDataApiDto>>,
 )
+
+/**
+ * Presenter class for the integration of a surgery report with [additionalData].
+ */
+@Serializable
+data class SurgeryReportPatchApiDto(val additionalData: String)
