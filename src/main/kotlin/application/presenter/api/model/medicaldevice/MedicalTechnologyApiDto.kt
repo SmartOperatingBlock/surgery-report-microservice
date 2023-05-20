@@ -32,3 +32,12 @@ enum class MedicalTechnologyApiDtoType {
     ENDOSCOPE,
     XRAY,
 }
+
+/**
+ * Presenter class that represent the usage of a [medicalTechnology] in a specific [dateTime].
+ */
+@Serializable
+data class MedicalTechnologyUsageApiDto(
+    val dateTime: String,
+    val medicalTechnology: MedicalTechnologyApiDto,
+)

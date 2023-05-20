@@ -12,7 +12,7 @@ import application.presenter.api.model.healthcareuser.HealthcareUserApiDto
 import application.presenter.api.model.healthcareuser.PatientVitalSignsApiDto
 import application.presenter.api.model.measurements.AggregateDataApiDto
 import application.presenter.api.model.medicaldevice.ImplantableMedicalDeviceApiDto
-import application.presenter.api.model.medicaldevice.MedicalTechnologyApiDto
+import application.presenter.api.model.medicaldevice.MedicalTechnologyUsageApiDto
 import application.presenter.api.model.process.SurgicalProcessStepApiDto
 import application.presenter.api.model.room.RoomApiDto
 import application.presenter.api.model.room.RoomApiDtoType
@@ -53,7 +53,7 @@ data class SurgeryReportApiDto(
     val healthcareUser: HealthcareUserApiDto?,
     val stepData: Map<SurgicalProcessStepApiDto, SurgicalProcessStepAggregateDataApiDto>,
     val consumedImplantableMedicalDevice: Set<ImplantableMedicalDeviceApiDto>,
-    val medicalTechnologyUsageData: Set<Pair<String, MedicalTechnologyApiDto>>,
+    val medicalTechnologyUsageData: Set<MedicalTechnologyUsageApiDto>,
     val healthProfessionalTrackingInformation: List<TrackingInformationApiDto>,
     val additionalData: String,
 )

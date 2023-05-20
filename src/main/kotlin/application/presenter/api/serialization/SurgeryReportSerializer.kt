@@ -12,6 +12,7 @@ import application.presenter.api.model.SurgeryReportApiDto
 import application.presenter.api.model.SurgeryReportEntry
 import application.presenter.api.model.SurgicalProcessStepAggregateDataApiDto
 import application.presenter.api.model.measurements.AggregateDataApiDto
+import application.presenter.api.model.medicaldevice.MedicalTechnologyUsageApiDto
 import application.presenter.api.serialization.HealthcareUserSerializer.toApiDto
 import application.presenter.api.serialization.MedicalDeviceSerializer.toApiDto
 import application.presenter.api.serialization.RoomSerializer.toApiDto
@@ -55,7 +56,7 @@ object SurgeryReportSerializer {
             .mapValues { (_, data) -> data.toApiDto() },
         consumedImplantableMedicalDevice = this.consumedImplantableMedicalDevices.map { it.toApiDto() }.toSet(),
         medicalTechnologyUsageData = this.medicalTechnologyUsageData
-            .map { it.first.toString() to it.second.toApiDto() }
+            .map { MedicalTechnologyUsageApiDto(it.first.toString(), it.second.toApiDto()) }
             .toSet(),
         healthProfessionalTrackingInformation = this.healthProfessionalTrackingInformation.map { it.toApiDto() },
         additionalData = this.additionalData,
