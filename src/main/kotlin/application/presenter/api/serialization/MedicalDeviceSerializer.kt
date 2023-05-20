@@ -27,7 +27,6 @@ object MedicalDeviceSerializer {
     fun ImplantableMedicalDevice.toApiDto(): ImplantableMedicalDeviceApiDto = ImplantableMedicalDeviceApiDto(
         id = this.id.value,
         type = this.type.toApiDtoType(),
-        usageDateTime = this.usageDateTime?.toString(),
     )
 
     private fun ImplantableMedicalDeviceType.toApiDtoType(): ImplantableMedicalDeviceApiDtoType = when (this) {

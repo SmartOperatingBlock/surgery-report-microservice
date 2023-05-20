@@ -8,19 +8,16 @@
 
 package entity.medicaldevice
 
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.Serializable
-import java.time.Instant
 
 /**
  * It describes an implantable medical device used during a surgery inside an Operating Room.
- * It is identified by its [id] and it is of a particular [type] and it is used in a specific [usageDateTime].
+ * It is identified by its [id] and it is of a particular [type].
  */
 @Serializable
 data class ImplantableMedicalDevice(
     val id: ImplantableMedicalDeviceID,
     val type: ImplantableMedicalDeviceType,
-    @Contextual val usageDateTime: Instant? = null,
 ) {
     override fun equals(other: Any?): Boolean = when {
         other === this -> true

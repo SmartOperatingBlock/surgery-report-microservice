@@ -12,13 +12,12 @@ import kotlinx.serialization.Serializable
 
 /**
  * Presenter class for the [entity.medicaldevice.ImplantableMedicalDevice] class.
- * It returns: the [id] of the implantable medical device, the [type] of it and its [usageDateTime] if present.
+ * It returns: the [id] of the implantable medical device and the [type]
  */
 @Serializable
 data class ImplantableMedicalDeviceApiDto(
     val id: String,
     val type: ImplantableMedicalDeviceApiDtoType,
-    val usageDateTime: String? = null,
 )
 
 /**

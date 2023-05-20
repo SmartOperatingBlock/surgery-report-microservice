@@ -143,12 +143,10 @@ object SurgicalProcessData {
         ImplantableMedicalDevice(
             ImplantableMedicalDeviceID("implantable1"),
             ImplantableMedicalDeviceType.PACEMAKER,
-            Instant.parse("2020-10-03T08:15:45Z"),
         ),
         ImplantableMedicalDevice(
             ImplantableMedicalDeviceID("implantable2"),
             ImplantableMedicalDeviceType.CATHETER,
-            Instant.parse("2020-10-03T08:17:45Z"),
         ),
     )
 
