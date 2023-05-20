@@ -1,3 +1,4 @@
+import infrastructure.api.APIController
 import infrastructure.database.SurgeryReportDatabase
 import infrastructure.events.KafkaClient
 import infrastructure.external.ExternalServiceCaller
@@ -16,6 +17,7 @@ import infrastructure.external.ExternalServiceCaller
 fun main() {
     val surgeryReportRepository = SurgeryReportDatabase()
     val externalServiceCaller = ExternalServiceCaller()
+    APIController(surgeryReportRepository).start()
     KafkaClient(
         surgeryReportRepository,
         externalServiceCaller,
