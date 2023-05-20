@@ -8,7 +8,15 @@
 
 package usecase
 
+import data.SurgeryReportData.simpleCompleteSurgeryReport
+import data.SurgicalProcessData.listOfTimedPatientVitalSigns
+import data.SurgicalProcessData.listOfTimedRoomEnvironmentalData
+import data.SurgicalProcessData.listOfhealthProfessionalTrackingData
+import data.SurgicalProcessData.sampleConsumedImplantableMedicalDevices
+import data.SurgicalProcessData.sampleMedicalTechnologyUsage
 import data.SurgicalProcessData.simpleSurgicalProcess
+import entity.healthcareuser.HealthcareUser
+import entity.room.RoomType
 import io.kotest.core.spec.style.StringSpec
 import io.kotest.matchers.shouldBe
 import java.time.Instant
@@ -45,5 +53,20 @@ class ReportGenerationUseCaseTest : StringSpec({
             data.startDateTime shouldBe startDates.next()
             data.stopDateTime?.run { this shouldBe stopDates.next() }
         }
+    }
+
+    "It should be able to generate a complete surgery report from the data related to a surgical process" {
+        ReportGenerationUseCase(
+            simpleSurgicalProcess,
+            listOfTimedPatientVitalSigns,
+            listOfhealthProfessionalTrackingData,
+            mapOf(
+                RoomType.PRE_OPERATING_ROOM to listOfTimedRoomEnvironmentalData,
+                RoomType.OPERATING_ROOM to listOfTimedRoomEnvironmentalData,
+            ),
+            simpleSurgicalProcess.taxCode?.let { HealthcareUser(it, "Mario", "Rossi") },
+            sampleConsumedImplantableMedicalDevices,
+            sampleMedicalTechnologyUsage,
+        ).execute() shouldBe simpleCompleteSurgeryReport
     }
 })
