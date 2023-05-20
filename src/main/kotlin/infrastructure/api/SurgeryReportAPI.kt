@@ -9,7 +9,9 @@
 package infrastructure.api
 
 import application.presenter.api.model.apiresponse.ApiResponses
+import application.presenter.api.serialization.SurgeryReportSerializer.toApiDto
 import application.service.SurgeryReportService
+import entity.process.SurgicalProcessID
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.Application
 import io.ktor.server.application.call
@@ -28,6 +30,7 @@ import usecase.repository.SurgeryReportRepository
 fun Application.surgeryReportAPI(apiPath: String, port: Int, surgeryReportRepository: SurgeryReportRepository) {
     routing {
         getAllSurgeryReportEntriesRoute(apiPath, port, surgeryReportRepository)
+        getSurgeryReportRoute(apiPath, surgeryReportRepository)
     }
 }
 
@@ -42,3 +45,16 @@ private fun Route.getAllSurgeryReportEntriesRoute(
     call.response.status(if (entries.isNotEmpty()) HttpStatusCode.OK else HttpStatusCode.NoContent)
     call.respond(ApiResponses.ResponseEntryList(entries, entries.size))
 }
+
+private fun Route.getSurgeryReportRoute(apiPath: String, surgeryReportRepository: SurgeryReportRepository) =
+    get("$apiPath/reports/{surgicalProcessId}") {
+        SurgeryReportService.GetSurgeryReport(
+            SurgicalProcessID(call.parameters["surgicalProcessId"].orEmpty()),
+            surgeryReportRepository,
+        ).execute().apply {
+            when (this) {
+                null -> call.respond(HttpStatusCode.NotFound)
+                else -> call.respond(this.toApiDto())
+            }
+        }
+    }
