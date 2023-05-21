@@ -18,8 +18,8 @@ import usecase.repository.RoomRepository
  * Some repository test doubles that can be used in tests.
  */
 object RepositoryTestDoubles {
-    val healthProfessionalRepository = HealthProfessionalRepository { _, _, _ ->
-        SurgicalProcessData.listOfhealthProfessionalTrackingData
+    val healthProfessionalRepository = HealthProfessionalRepository { roomID, _, _ ->
+        SurgicalProcessData.listOfhealthProfessionalTrackingData.filter { it.roomID == roomID }
     }
     val roomRepository = RoomRepository { _, _, _ -> SurgicalProcessData.listOfTimedRoomEnvironmentalData }
     val healthcareUserRepository = HealthcareUserRepository { _ ->
