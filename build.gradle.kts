@@ -35,6 +35,8 @@ dependencies {
     implementation(libs.ktor.server.core)
     implementation(libs.ktor.server.content.negotiation)
     implementation(libs.ktor.server.engine.netty)
+    implementation(libs.logback)
+    implementation(libs.slf4j)
     testImplementation(libs.bundles.kotlin.testing)
 }
 
