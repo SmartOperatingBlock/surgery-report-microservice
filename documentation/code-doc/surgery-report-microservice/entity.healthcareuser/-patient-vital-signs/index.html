@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+    <title>PatientVitalSigns</title>
+    <link href="../../../images/logo-icon.svg" rel="icon" type="image/svg">
+    <script>var pathToRoot = "../../../";</script>
+    <script>const storage = localStorage.getItem("dokka-dark-mode")
+    if (storage == null) {
+        const osDarkSchemePreferred = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+        if (osDarkSchemePreferred === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    } else {
+        const savedDarkMode = JSON.parse(storage)
+        if(savedDarkMode === true) {
+            document.getElementsByTagName("html")[0].classList.add("theme-dark")
+        }
+    }
+    </script>
+<script type="text/javascript" src="../../../scripts/sourceset_dependencies.js" async="async"></script>
+<link href="../../../styles/style.css" rel="Stylesheet">
+<link href="../../../styles/jetbrains-mono.css" rel="Stylesheet">
+<link href="../../../styles/main.css" rel="Stylesheet">
+<link href="../../../styles/prism.css" rel="Stylesheet">
+<link href="../../../styles/logo-styles.css" rel="Stylesheet">
+<script type="text/javascript" src="../../../scripts/clipboard.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/navigation-loader.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/platform-content-handler.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/main.js" defer="defer"></script>
+<script type="text/javascript" src="../../../scripts/prism.js" async="async"></script>
+<script type="text/javascript" src="../../../scripts/symbol-parameters-wrapper_deferred.js" defer="defer"></script>
+</head>
+<body>
+<div class="navigation-wrapper" id="navigation-wrapper">
+    <div id="leftToggler"><span class="icon-toggler"></span></div>
+    <div class="library-name">
+            <a href="../../../index.html">
+                    <span>surgery-report-microservice</span>
+            </a>
+    </div>
+    <div>
+    </div>
+    <div class="pull-right d-flex">
+        <div class="filter-section" id="filter-section">
+                <button class="platform-tag platform-selector jvm-like" data-active="" data-filter=":dokkaHtml/main">jvm</button>
+        </div>
+        <button id="theme-toggle-button"><span id="theme-toggle"></span></button>
+        <div id="searchBar"></div>
+    </div>
+</div>
+<div id="container">
+    <div id="leftColumn">
+        <div id="sideMenu"></div>
+    </div>
+    <div id="main">
+<div class="main-content" data-page-type="classlike" id="content" pageIds="surgery-report-microservice::entity.healthcareuser/PatientVitalSigns///PointingToDeclaration//769193423">
+  <div class="breadcrumbs"><a href="../../../index.html">surgery-report-microservice</a><span class="delimiter">/</span><a href="../index.html">entity.healthcareuser</a><span class="delimiter">/</span><span class="current">PatientVitalSigns</span></div>
+  <div class="cover ">
+    <h1 class="cover"><span>Patient</span><wbr></wbr><span>Vital</span><wbr></wbr><span><span>Signs</span></span></h1>
+    <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><div class="block"><div class="block"><span class="token annotation builtin">@</span><span data-unresolved-link="kotlinx.serialization/Serializable///PointingToDeclaration/"><span class="token annotation builtin">Serializable</span></span></div></div><span class="token keyword">data </span><span class="token keyword">class </span><a href="index.html">PatientVitalSigns</a><span class="token punctuation">(</span><span class="parameters "><span class="parameter "><span class="token keyword">val </span>heartBeat<span class="token operator">: </span><a href="../-vital-sign/-heart-beat/index.html">VitalSign.HeartBeat</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>diastolicBloodPressure<span class="token operator">: </span><a href="../-vital-sign/-diastolic-blood-pressure/index.html">VitalSign.DiastolicBloodPressure</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>systolicBloodPressure<span class="token operator">: </span><a href="../-vital-sign/-systolic-blood-pressure/index.html">VitalSign.SystolicBloodPressure</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>respiratoryRate<span class="token operator">: </span><a href="../-vital-sign/-respiratory-rate/index.html">VitalSign.RespiratoryRate</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>saturationPercentage<span class="token operator">: </span><a href="../-vital-sign/-saturation-percentage/index.html">VitalSign.SaturationPercentage</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter "><span class="token keyword">val </span>bodyTemperature<span class="token operator">: </span><a href="../-vital-sign/-body-temperature/index.html">VitalSign.BodyTemperature</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div><p class="paragraph"><a href="../-vital-sign/index.html">VitalSign</a>s of a patient.</p><ul><li><p class="paragraph"><a href="heart-beat.html">heartBeat</a></p></li><li><p class="paragraph"><a href="diastolic-blood-pressure.html">diastolicBloodPressure</a></p></li><li><p class="paragraph"><a href="systolic-blood-pressure.html">systolicBloodPressure</a></p></li><li><p class="paragraph"><a href="respiratory-rate.html">respiratoryRate</a></p></li><li><p class="paragraph"><a href="saturation-percentage.html">saturationPercentage</a></p></li><li><p class="paragraph"><a href="body-temperature.html">bodyTemperature</a></p></li></ul></div></div>
+  </div>
+  <div class="tabbedcontent">
+    <div class="tabs-section" tabs-section="tabs-section"><button class="section-tab" data-active="" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY">Members</button><button class="section-tab" data-togglable="CONSTRUCTOR,TYPE,FUNCTION,PROPERTY,EXTENSION_PROPERTY,EXTENSION_FUNCTION">Members &amp; Extensions</button></div>
+    <div class="tabs-section-body">
+      <div data-togglable="CONSTRUCTOR">
+        <h2 class="">Constructors</h2>
+        <div class="table"><a data-name="1823465715%2FConstructors%2F769193423" anchor-label="PatientVitalSigns" id="1823465715%2FConstructors%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="CONSTRUCTOR" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="-patient-vital-signs.html"><span>Patient</span><wbr></wbr><span>Vital</span><wbr></wbr><span><span>Signs</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1823465715%2FConstructors%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword">constructor</span><span class="token punctuation">(</span><span class="parameters "><span class="parameter ">heartBeat<span class="token operator">: </span><a href="../-vital-sign/-heart-beat/index.html">VitalSign.HeartBeat</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">diastolicBloodPressure<span class="token operator">: </span><a href="../-vital-sign/-diastolic-blood-pressure/index.html">VitalSign.DiastolicBloodPressure</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">systolicBloodPressure<span class="token operator">: </span><a href="../-vital-sign/-systolic-blood-pressure/index.html">VitalSign.SystolicBloodPressure</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">respiratoryRate<span class="token operator">: </span><a href="../-vital-sign/-respiratory-rate/index.html">VitalSign.RespiratoryRate</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">saturationPercentage<span class="token operator">: </span><a href="../-vital-sign/-saturation-percentage/index.html">VitalSign.SaturationPercentage</a><span class="token operator">?</span><span class="token operator"> = </span>null<span class="token punctuation">, </span></span><span class="parameter ">bodyTemperature<span class="token operator">: </span><a href="../-vital-sign/-body-temperature/index.html">VitalSign.BodyTemperature</a><span class="token operator">?</span><span class="token operator"> = </span>null</span></span><span class="token punctuation">)</span></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="EXTENSION_FUNCTION">
+        <h2 class="">Functions</h2>
+        <div class="table"><a data-name="124884689%2FFunctions%2F769193423" anchor-label="toApiDto" id="124884689%2FFunctions%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-togglable="EXTENSION_FUNCTION" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="../../application.presenter.api.serialization/-healthcare-user-serializer/to-api-dto.html"><span>to</span><wbr></wbr><span>Api</span><wbr></wbr><span><span>Dto</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="124884689%2FFunctions%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">fun </span><a href="index.html">PatientVitalSigns</a><span class="token punctuation">.</span><a href="../../application.presenter.api.serialization/-healthcare-user-serializer/to-api-dto.html"><span class="token function">toApiDto</span></a><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">: </span><a href="../../application.presenter.api.model.healthcareuser/-patient-vital-signs-api-dto/index.html">PatientVitalSignsApiDto</a></div><div class="brief "><p class="paragraph">Extension method to obtain the api dto of patient vital signs.</p></div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-togglable="PROPERTY">
+        <h2 class="">Properties</h2>
+        <div class="table"><a data-name="574262423%2FProperties%2F769193423" anchor-label="bodyTemperature" id="574262423%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="body-temperature.html"><span>body</span><wbr></wbr><span><span>Temperature</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="574262423%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="body-temperature.html">bodyTemperature</a><span class="token operator">: </span><a href="../-vital-sign/-body-temperature/index.html">VitalSign.BodyTemperature</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="1244214246%2FProperties%2F769193423" anchor-label="diastolicBloodPressure" id="1244214246%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="diastolic-blood-pressure.html"><span>diastolic</span><wbr></wbr><span>Blood</span><wbr></wbr><span><span>Pressure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="1244214246%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="diastolic-blood-pressure.html">diastolicBloodPressure</a><span class="token operator">: </span><a href="../-vital-sign/-diastolic-blood-pressure/index.html">VitalSign.DiastolicBloodPressure</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-851407315%2FProperties%2F769193423" anchor-label="heartBeat" id="-851407315%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="heart-beat.html"><span>heart</span><wbr></wbr><span><span>Beat</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-851407315%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="heart-beat.html">heartBeat</a><span class="token operator">: </span><a href="../-vital-sign/-heart-beat/index.html">VitalSign.HeartBeat</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="550999423%2FProperties%2F769193423" anchor-label="respiratoryRate" id="550999423%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="respiratory-rate.html"><span>respiratory</span><wbr></wbr><span><span>Rate</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="550999423%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="respiratory-rate.html">respiratoryRate</a><span class="token operator">: </span><a href="../-vital-sign/-respiratory-rate/index.html">VitalSign.RespiratoryRate</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="-817691227%2FProperties%2F769193423" anchor-label="saturationPercentage" id="-817691227%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="saturation-percentage.html"><span>saturation</span><wbr></wbr><span><span>Percentage</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="-817691227%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="saturation-percentage.html">saturationPercentage</a><span class="token operator">: </span><a href="../-vital-sign/-saturation-percentage/index.html">VitalSign.SaturationPercentage</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+<a data-name="69865832%2FProperties%2F769193423" anchor-label="systolicBloodPressure" id="69865832%2FProperties%2F769193423" data-filterable-set=":dokkaHtml/main"></a>
+          <div class="table-row" data-filterable-current=":dokkaHtml/main" data-filterable-set=":dokkaHtml/main">
+            <div class="main-subrow keyValue ">
+              <div class=""><span class="inline-flex">
+                  <div><a href="systolic-blood-pressure.html"><span>systolic</span><wbr></wbr><span>Blood</span><wbr></wbr><span><span>Pressure</span></span></a></div>
+<span class="anchor-wrapper"><span class="anchor-icon" pointing-to="69865832%2FProperties%2F769193423"></span>
+                    <div class="copy-popup-wrapper "><span class="copy-popup-icon"></span><span>Link copied to clipboard</span></div>
+                  </span></span></div>
+              <div>
+                <div class="title">
+                  <div class="platform-hinted " data-platform-hinted="data-platform-hinted"><div class="content sourceset-dependent-content" data-active="" data-togglable=":dokkaHtml/main"><div class="symbol monospace"><span class="token keyword"></span><span class="token keyword">val </span><a href="systolic-blood-pressure.html">systolicBloodPressure</a><span class="token operator">: </span><a href="../-vital-sign/-systolic-blood-pressure/index.html">VitalSign.SystolicBloodPressure</a><span class="token operator">?</span><span class="token operator"> = </span>null</div></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      <div class="footer">
+        <span class="go-to-top-icon"><a href="#content" id="go-to-top-link"></a></span><span>© 2023 Copyright</span><span
+                class="pull-right"><span>Generated by </span><a
+                href="https://github.com/Kotlin/dokka"><span>dokka</span><span class="padded-icon"></span></a></span>
+      </div>
+    </div>
+</div>
+</body>
+</html>
