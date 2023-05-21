@@ -22,3 +22,17 @@ You need to specify the following environment variable:
 - `PATIENT_MANAGEMENT_INTEGRATION_MICROSERVICE_URL`: the url of the Patient Management Integration microservice
 - `SCHEMA_REGISTRY_URL`: the kafka schema registry url
 - `STAFF_TRACKING_MICROSERVICE_URL`: the url of the Staff Tracking microservice
+
+If you want to run it via docker container:
+1. Provide a `.env` file with all the environment variable described above
+2. Run the container with the command:
+   ```bash
+    docker run ghcr.io/smartoperatingblock/surgery-report-microservice:latest
+    ```
+    1. If you want to try the REST-API from the external you need to provide a port mapping to port 3000.
+    2. If you want to pass an environment file whose name is different from `.env` use the `--env-file <name>` parameter.
+
+## Documentation
+- Check out the website [here](https://smartoperatingblock.github.io/surgery-report-microservice/)
+- Direct link to the *REST-API* documentation [here](https://smartoperatingblock.github.io/surgery-report-microservice/documentation/openapi-doc/)
+- Direct link to the *Code* documentation [here](https://smartoperatingblock.github.io/surgery-report-microservice/documentation/code-doc/)
