@@ -17,6 +17,7 @@ import org.litote.kmongo.eq
 import org.litote.kmongo.findOne
 import org.litote.kmongo.getCollection
 import org.litote.kmongo.setValue
+import org.slf4j.LoggerFactory
 import usecase.repository.SurgeryReportRepository
 
 /**
@@ -61,7 +62,7 @@ class SurgeryReportDatabase(customConnectionString: String? = null) : SurgeryRep
         try {
             operation()
         } catch (exception: MongoException) {
-            println(exception)
+            logger.error(exception.message)
             defaultResult
         }
 
@@ -69,5 +70,6 @@ class SurgeryReportDatabase(customConnectionString: String? = null) : SurgeryRep
         private const val MONGODB_CONNECTION_STRING_VARIABLE = "MONGODB_CONNECTION_STRING"
         private const val DATABASE_NAME = "surgery_report"
         private const val SURGERY_REPORT_COLLECTION_NAME = "surgery_reports"
+        private val logger = LoggerFactory.getLogger(SurgeryReportDatabase::class.java)
     }
 }

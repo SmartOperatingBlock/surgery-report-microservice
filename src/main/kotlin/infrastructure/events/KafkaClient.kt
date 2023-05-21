@@ -13,6 +13,7 @@ import application.handler.EventHandlers
 import application.presenter.event.serialization.EventSerialization.toEvent
 import org.apache.kafka.clients.consumer.ConsumerRecord
 import org.apache.kafka.clients.consumer.KafkaConsumer
+import org.slf4j.LoggerFactory
 import usecase.repository.HealthProfessionalRepository
 import usecase.repository.HealthcareUserRepository
 import usecase.repository.RoomRepository
@@ -60,13 +61,15 @@ class KafkaClient(
         this.kafkaConsumer.subscribe(listOf(PROCESS_SUMMARY_EVENTS_TOPIC)).run {
             while (true) {
                 kafkaConsumer.poll(Duration.ofMillis(POLLING_TIME)).forEach { event ->
+                    logger.info("Received event: ${event.key()}")
                     try {
                         consumeEvent(event)
                     } catch (e: IllegalArgumentException) {
-                        println("INFO: Event discarded! - $e")
+                        logger.info("Event discarded! - $e")
                     } catch (e: DateTimeParseException) {
-                        println("ERROR: Invalid Date in event. Event discarded! - $e")
+                        logger.info("Invalid Date in event. Event discarded! - $e")
                     }
+                    logger.info("Consumed event: ${event.key()}")
                 }
             }
         }
@@ -84,5 +87,6 @@ class KafkaClient(
         private const val SCHEMA_REGISTRY_URL_VARIABLE = "SCHEMA_REGISTRY_URL"
         private const val PROCESS_SUMMARY_EVENTS_TOPIC = "process-summary-events"
         private const val POLLING_TIME = 100L
+        private val logger = LoggerFactory.getLogger(KafkaClient::class.java.toString())
     }
 }
