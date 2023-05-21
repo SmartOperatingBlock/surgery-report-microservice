@@ -1,0 +1,360 @@
+openapi: 3.0.0
+servers:
+  - description: Surgery report microservice
+    url: http://localhost:<port>/api/v1
+info:
+  description: This is the API of the Surgery Report microservice within the Smart Operating Block project
+  version: 1.0.0
+  title: Surgery Report microservice API
+  contact:
+    email: info@smartoperatingblock.com
+  license:
+    name: MIT License
+    url: 'https://opensource.org/license/mit/'
+
+tags:
+  - name: Surgery Report API
+    description: This is the available API to obtain and integrate information about surgery reports within the Operating Block.
+
+paths:
+  /reports:
+    get:
+      tags:
+        - Surgery Report API
+      summary: get all surgery report entries
+      operationId: getSurgeryReportEntries
+      description: Get all the surgery report entries available.
+      responses:
+        '200':
+          description: search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ArrayOfSurgeryReportEntry'
+        '204':
+          description: no surgery report available
+        '500':
+          description: server error occurred
+
+  /reports/{surgicalProcessId}:
+    get:
+      tags:
+        - Surgery Report API
+      summary: get a specific surgery report
+      operationId: getSurgeryReport
+      description: Get a specific surgery report
+      parameters:
+        - in: path
+          name: surgicalProcessId
+          description: the surgical process for which obtain the surgery report
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: search result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SurgeryReport'
+        '404':
+          description: surgery report not found
+        '500':
+          description: server error occurred
+    patch:
+      tags:
+        - Surgery Report API
+      summary: integrate the additional information of a specific surgery report
+      operationId: integrateSurgeryReport
+      description: Integrate the additional information of a specific surgery report
+      parameters:
+        - in: path
+          name: surgicalProcessId
+          description: the surgical process for which obtain the surgery report
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/merge-patch+json:
+            schema:
+              type: object
+              properties:
+                additionalData:
+                  type: string
+                  example: The surgery was perfomed correctly and in time.
+                  description: The additional data that a health professional want to add to the surgery report. Each request will replace the content of that additional field.
+      responses:
+        '204':
+          description: surgery report integrated
+        '400':
+          description: malformed merge patch file
+        '404':
+          description: surgery report not found
+        '500':
+          description: server error occurred
+
+
+components:
+  schemas:
+    SurgeryReportEntry:
+      type: object
+      properties:
+        surgicalProcessID:
+          type: string
+          example: 'processId'
+        patientId:
+          type: string
+          example: 'patient1'
+        patientName:
+          type: string
+          example: 'Mario'
+        patientSurname:
+          type: string
+          example: 'Rossi'
+        surgicalProcessDescription:
+          type: string
+          example: 'description of the surgical process involved in the surgery report'
+        surgeryDate:
+          type: string
+          format: date-time
+          example: '2020-10-03T08:10:00Z'
+
+
+    ArrayOfSurgeryReportEntry:
+      type: object
+      properties:
+        entries:
+          type: array
+          description: surgery report entries
+          items:
+            type: object
+            properties:
+              entry:
+                $ref: '#/components/schemas/SurgeryReportEntry'
+              url:
+                type: string
+                format: uri
+                example: 'http://localhost:3000/api/v1/reports/processId'
+        total:
+          type: integer
+          description: the total number of surgery report entries
+          example: 1
+
+    RoomType:
+      type: string
+      enum: [OPERATING_ROOM, PRE_OPERATING_ROOM]
+      example: OPERATING_ROOM
+
+    PatientVitalSigns:
+      type: object
+      properties:
+        heartBeat:
+          type: integer
+          nullable: true
+          example: 60
+        diastolicBloodPressure:
+          type: integer
+          nullable: true
+          example: 100
+        systolicBloodPressure:
+          type: integer
+          nullable: true
+          example: 100
+        respiratoryRate:
+          type: integer
+          nullable: true
+          example: 20
+        saturationPercentage:
+          type: number
+          nullable: true
+          example: 110.1
+        bodyTemperature:
+          type: object
+          nullable: true
+          properties:
+            value:
+              type: number
+              example: 25.3
+            unit:
+              type: string
+              enum: [CELSIUS]
+              example: CELSIUS
+
+    RoomEnvironmentalData:
+      type: object
+      properties:
+        temperature:
+          type: object
+          nullable: true
+          properties:
+            value:
+              type: number
+              example: 25.3
+            unit:
+              type: string
+              enum: [CELSIUS]
+              example: CELSIUS
+        humidity:
+          type: number
+          nullable: true
+          example: 55.5
+        luminosity:
+          type: object
+          nullable: true
+          properties:
+            value:
+              type: number
+              example: 150.5
+            unit:
+              type: string
+              enum: [LUX]
+              example: LUX
+        presence:
+          type: boolean
+          nullable: true
+          example: true
+
+    SurgeryReport:
+      type: object
+      properties:
+        surgicalProcessID:
+          type: string
+          example: 'processId'
+        surgeryDate:
+          type: string
+          format: date-time
+          example: '2020-10-03T08:10:00Z'
+        surgicalProcessDescription:
+          type: string
+          example: 'description of the surgical process involved in the surgery report'
+        patientID:
+          type: string
+          example: 'patient1'
+        roomsInvolved:
+          type: array
+          description: the list of room involved in the surgical process described
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: 'room1'
+              type:
+                $ref: '#/components/schemas/RoomType'
+        inChargeHealthProfessionalID:
+          type: string
+          example: '12345678'
+          nullable: true
+        healthcareUser:
+          nullable: true
+          type: object
+          properties:
+            taxCode:
+              type: string
+              example: 'taxcode'
+            name:
+              type: string
+              example: 'name'
+            surname:
+              type: string
+              example: 'surname'
+        stepData:
+          type: object
+          description: the key is the surgical process step and the value is the aggregate data related to the step period
+          additionalProperties:
+            type: object
+            properties:
+              startDateTime:
+                type: string
+                format: date-time
+                example: '2020-10-03T08:10:00Z'
+              stopDateTime:
+                type: string
+                format: date-time
+                example: '2020-10-03T10:10:00Z'
+              patientVitalSignAggregateData:
+                type: object
+                properties:
+                  average:
+                    $ref: '#/components/schemas/PatientVitalSigns'
+                  std:
+                    $ref: '#/components/schemas/PatientVitalSigns'
+                  maximum:
+                    $ref: '#/components/schemas/PatientVitalSigns'
+                  minimum:
+                    $ref: '#/components/schemas/PatientVitalSigns'
+              environmentalAggregateData:
+                type: object
+                description: the key is the room type [OPERATING_ROOM, PRE_OPERATING_ROOM]
+                additionalProperties:
+                  type: object
+                  properties:
+                    average:
+                      $ref: '#/components/schemas/RoomEnvironmentalData'
+                    std:
+                      $ref: '#/components/schemas/RoomEnvironmentalData'
+                    maximum:
+                      $ref: '#/components/schemas/RoomEnvironmentalData'
+                    minimum:
+                      $ref: '#/components/schemas/RoomEnvironmentalData'
+        consumedImplantableMedicalDevice:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: string
+                example: 'implantable1'
+              type:
+                type: string
+                enum: [CATHETER, PACEMAKER]
+                example: PACEMAKER
+        medicalTechnologyUsageData:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+                format: date-time
+              medicalTechnology:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    example: medicalTechnology
+                  name:
+                    type: string
+                    example: 'endoscope'
+                  description:
+                    type: string
+                    nullable: true
+                    example: 'description of the interested medical technology'
+                  type:
+                    type: string
+                    enum: [ENDOSCOPE, XRAY]
+                    example: ENDOSCOPE
+                  inUse:
+                    type: boolean
+        healthProfessionalTrackingInformation:
+          type: array
+          items:
+            type: object
+            properties:
+              dateTime:
+                type: string
+                format: date-time
+              healthProfessionalId:
+                type: string
+                example: 12345678
+              roomID:
+                type: string
+                example: room1
+              trackType:
+                type: string
+                enum: [ENTER, EXIT]
+                example: ENTER
+        additionalData:
+          type: string
+          example: this is additional data added by the health professionals
