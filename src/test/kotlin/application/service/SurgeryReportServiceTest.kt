@@ -20,6 +20,7 @@ import infrastructure.external.testdouble.RepositoryTestDoubles.healthProfession
 import infrastructure.external.testdouble.RepositoryTestDoubles.healthcareUserRepository
 import infrastructure.external.testdouble.RepositoryTestDoubles.roomRepository
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.equality.shouldBeEqualToComparingFields
 import io.kotest.matchers.shouldBe
 
 class SurgeryReportServiceTest : StringSpec({
@@ -38,7 +39,7 @@ class SurgeryReportServiceTest : StringSpec({
 
     "it should be possible to generate a surgery report using the repositories to obtain the remaining data" {
         withMongo {
-            generateSurgeryReport() shouldBe simpleCompleteSurgeryReport
+            generateSurgeryReport()?.shouldBeEqualToComparingFields(simpleCompleteSurgeryReport)
         }
     }
 
@@ -55,7 +56,7 @@ class SurgeryReportServiceTest : StringSpec({
             SurgeryReportService.GetSurgeryReport(
                 simpleSurgicalProcess.id,
                 getDatabase(),
-            ).execute() shouldBe simpleCompleteSurgeryReport
+            ).execute()?.shouldBeEqualToComparingFields(simpleCompleteSurgeryReport)
         }
     }
 

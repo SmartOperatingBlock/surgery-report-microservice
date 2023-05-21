@@ -18,6 +18,7 @@ import data.SurgicalProcessData.simpleSurgicalProcess
 import entity.healthcareuser.HealthcareUser
 import entity.room.RoomType
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.equality.shouldBeEqualToComparingFields
 import io.kotest.matchers.shouldBe
 import java.time.Instant
 
@@ -67,6 +68,6 @@ class ReportGenerationUseCaseTest : StringSpec({
             simpleSurgicalProcess.taxCode?.let { HealthcareUser(it, "Mario", "Rossi") },
             sampleConsumedImplantableMedicalDevices,
             sampleMedicalTechnologyUsage,
-        ).execute() shouldBe simpleCompleteSurgeryReport
+        ).execute() shouldBeEqualToComparingFields simpleCompleteSurgeryReport
     }
 })

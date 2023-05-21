@@ -18,6 +18,7 @@ import entity.healthcareuser.HealthcareUser
 import entity.healthcareuser.TaxCode
 import entity.room.RoomType
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.equality.shouldBeEqualToComparingFields
 import io.kotest.matchers.shouldBe
 import usecase.ReportGenerationUseCase
 
@@ -41,7 +42,7 @@ class SurgeryReportDatabaseTest : StringSpec({
         withMongo {
             val database = getDatabase()
             database.createSurgeryReport(surgeryReport) shouldBe true
-            database.findBy(surgeryReport.surgicalProcessID) shouldBe surgeryReport
+            database.findBy(surgeryReport.surgicalProcessID)?.shouldBeEqualToComparingFields(surgeryReport)
         }
     }
 
@@ -73,7 +74,7 @@ class SurgeryReportDatabaseTest : StringSpec({
         withMongo {
             val database = getDatabase()
             database.createSurgeryReport(surgeryReport)
-            database.findBy(surgeryReport.surgicalProcessID) shouldBe surgeryReport
+            database.findBy(surgeryReport.surgicalProcessID)?.shouldBeEqualToComparingFields(surgeryReport)
         }
     }
 

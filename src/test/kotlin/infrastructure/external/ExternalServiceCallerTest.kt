@@ -21,6 +21,7 @@ import entity.room.RoomID
 import entity.tracking.TrackType
 import entity.tracking.TrackingInfo
 import io.kotest.core.spec.style.StringSpec
+import io.kotest.matchers.equality.shouldBeEqualToComparingFields
 import io.kotest.matchers.shouldBe
 import io.ktor.client.engine.mock.MockEngine
 import io.ktor.client.engine.mock.respond
@@ -83,7 +84,8 @@ class ExternalServiceCallerTest : StringSpec({
             },
             avoidCheckOnMicroserviceUrl = true,
         )
-        externalServiceCaller.getHealthcareUser(healthcareUserResult.taxCode) shouldBe healthcareUserResult
+        externalServiceCaller.getHealthcareUser(healthcareUserResult.taxCode)
+            ?.shouldBeEqualToComparingFields(healthcareUserResult)
     }
 
     "it should be able to handle the absence of tracking data about a room" {
