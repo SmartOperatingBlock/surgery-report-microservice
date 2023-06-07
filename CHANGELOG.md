@@ -1,3 +1,23 @@
+## [1.0.1](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.0...1.0.1) (2023-06-07)
+
+
+### Dependency updates
+
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.7.0 ([1e7c0ec](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/1e7c0ec1831ea7d29d626e0220268b5612c87212))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.27 ([b056e39](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/b056e3903f7cf246d0b75716c9cb36ef504fc219))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.30 ([d7b86a2](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/d7b86a28f176b85b2b4cfce6c7a45a1613e1e669))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.32 ([0d32652](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/0d32652ccf85d822f25597545821bfa9ed11ebfc))
+* **deps:** update ktor to v2.3.1 ([38cb2a7](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/38cb2a7d96ef36a2ad783239a974d4792c0dc347))
+* **deps:** update plugin com.gradle.enterprise to v3.13.3 ([7954fad](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/7954fade9a76b896b750b114837a1ca004205a30))
+* **deps:** update plugin kotlin-qa to v0.42.0 ([9e2d7cf](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/9e2d7cfef88678d9d1b07091bab290726933e183))
+* **deps:** update plugin kotlin-qa to v0.42.1 ([a886992](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/a886992bd3a2b17ff8adac4085da25e22272979b))
+* **deps:** update plugin org.danilopianini.gradle-pre-commit-git-hooks to v1.1.8 ([9317960](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/9317960732c8d92d9a89d846525392382c2959c9))
+
+
+### Documentation
+
+* **deps:** update plugin dokka to v1.8.20 ([8d61630](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/8d616300c8ccdf7d63435265a2d189b7730e2bf8))
+
 ## 1.0.0 (2023-05-21)
 
 
