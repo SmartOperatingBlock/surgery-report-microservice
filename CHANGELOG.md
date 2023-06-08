@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.1...1.0.2) (2023-06-08)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlin:kotlin-stdlib to v1.8.22 ([7100bf6](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/7100bf646d1070b1dcb7747882ce35324fa9559f))
+* **deps:** update plugin kotlin-qa to v0.43.0 ([758d28f](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/758d28f90eb48ff2cec0af062c43d3cada137c47))
+
 ## [1.0.1](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.0...1.0.1) (2023-06-07)
 
 
