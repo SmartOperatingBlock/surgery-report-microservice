@@ -48,8 +48,9 @@ object ExternalServiceSerialization {
      * [StaffTrackingDtoModel.TrackingInfoResultDto].
      * @return the deserialized tracking information about a health professional
      */
-    fun StaffTrackingDtoModel.TrackingInfoResultDto.toHealthProfessionalTrackingInfo():
-        TrackingInfo<HealthProfessionalID> = TrackingInfo(
+    fun StaffTrackingDtoModel.TrackingInfoResultDto.toHealthProfessionalTrackingInfo(): TrackingInfo<
+        HealthProfessionalID,
+        > = TrackingInfo(
         dateTime = Instant.parse(this.dateTime),
         individual = HealthProfessionalID(this.healthProfessionalId),
         roomID = RoomID(this.roomId),

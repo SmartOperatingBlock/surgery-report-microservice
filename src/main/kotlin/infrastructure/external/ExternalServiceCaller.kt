@@ -115,8 +115,11 @@ class ExternalServiceCaller(engine: HttpClientEngine = OkHttp.create(), avoidChe
             when (response.status) {
                 HttpStatusCode.NotFound, HttpStatusCode.InternalServerError -> listOf()
                 else ->
-                    response.body<ApiResponses.ResponseEntryList<
-                        ApiResponses.ResponseTimedEntry<BuildingManagementDtoModel.EnvironmentalDataApiDto>,>,>()
+                    response.body<
+                        ApiResponses.ResponseEntryList<
+                            ApiResponses.ResponseTimedEntry<BuildingManagementDtoModel.EnvironmentalDataApiDto>,
+                            >,
+                        >()
                         .entries
                         .map { Instant.parse(it.date) to it.entry.toRoomEnvironmentalData() }
             }
