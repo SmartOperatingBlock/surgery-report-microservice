@@ -1,3 +1,13 @@
+## [1.0.5](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.4...1.0.5) (2023-07-12)
+
+
+### Dependency updates
+
+* **core-deps:** update plugin kotlin-serialization to v1.9.0 ([a687bf0](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/a687bf0d24769c146e784b1aedec54bbcb094e54))
+* **deps:** update dependency gradle to v8.2.1 ([4ecdaae](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/4ecdaae2a91a8a6cf94e02a7f5b6cb4cbaafd99d))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.40 ([a271cc7](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/a271cc73068eaf5b35d98b2c52072b8b21a14016))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.41 ([1a8ff50](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/1a8ff509ad309d218157d1689ae7865ab134cd97))
+
 ## [1.0.4](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.3...1.0.4) (2023-07-07)
 
 
