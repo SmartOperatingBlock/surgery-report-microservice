@@ -6,7 +6,7 @@ ktor = "2.3.3"
 [libraries]
 archunit = { module = "com.tngtech.archunit:archunit-junit5", version = "1.1.0" }
 embedmongo = { module = "de.flapdoodle.embed:de.flapdoodle.embed.mongo", version = "4.9.0" }
-kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "7.4.1-ce"}
+kafka-clients = { module = "org.apache.kafka:kafka-clients", version = "7.5.0-ce"}
 kmongo = { module = "org.litote.kmongo:kmongo-serialization", version = "4.10.0" }
 kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib", version.ref = "kotlin" }
 kotest-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
