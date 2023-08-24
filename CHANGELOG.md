@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.6...1.0.7) (2023-08-24)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlin:kotlin-stdlib to v1.9.10 ([e207c1e](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/e207c1eaed12859c9e5549e0b0f23c59bd6ef154))
+
 ## [1.0.6](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.5...1.0.6) (2023-08-23)
 
 
