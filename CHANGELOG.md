@@ -1,3 +1,15 @@
+## [1.0.8](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.7...1.0.8) (2023-08-28)
+
+
+### Dependency updates
+
+* **core-deps:** update plugin kotlin-serialization to v1.9.10 ([e9b5c2b](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/e9b5c2b6c2379cf5fe95b5be896999e8da119c0a))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.9.1 ([6a91866](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/6a91866e5c8ded2651b2f1e717afab4a9ef57d8b))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.9.2 ([69e373d](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/69e373d70901c287277f423c7191a7d6085b3c74))
+* **deps:** update dependency org.apache.kafka:kafka-clients to v7.5.0-ce ([fbc229e](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/fbc229e4f7d9091178ab330d19a6ed6479780955))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.47 ([c929d97](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/c929d97eb6b09507d3ba8b79107e5605bc5dceaf))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.48 ([2457187](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/245718798f3a4b10482e2673901acd580bf47bb9))
+
 ## [1.0.7](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.6...1.0.7) (2023-08-24)
 
 
