@@ -1,3 +1,33 @@
+## [1.0.9](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.8...1.0.9) (2023-09-08)
+
+
+### Dependency updates
+
+* **deps:** update dependency org.slf4j:slf4j-api to v2.0.8 ([2bc29fc](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/2bc29fc86684309b57cc06ba68654fe82d3c2229))
+* **deps:** update dependency org.slf4j:slf4j-api to v2.0.9 ([f137c14](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/f137c143fa67de80e5b99284a20b4b0542118183))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.49 ([be2e91d](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/be2e91d9371ee8f19a17ceeac8547a7fe2fd2a30))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.51 ([dc5063c](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/dc5063c49c0132b918a4d0ca5d88f8a6c64d3f56))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.52 ([108b858](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/108b8585a7e6a7e4e876a19d8892cebbc5f188ec))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.53 ([f6d097f](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/f6d097f0c413bc09021f1e96ece368dcdc09b857))
+* **deps:** update kotest to v5.7.0 ([05bb8ab](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/05bb8ab7162fa861d2a6569f036b06d9ea93ba93))
+* **deps:** update kotest to v5.7.1 ([10d60ca](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/10d60ca7a786dc7f92c1daec856b6f59572aa0ff))
+* **deps:** update kotest to v5.7.2 ([68b741c](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/68b741c5be41b6f9d9862c387d56fdafba58aad1))
+* **deps:** update ktor to v2.3.4 ([98409df](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/98409df968fe0b377ee95f4d7d8d5cf33f5fffa1))
+* **deps:** update plugin kotlin-qa to v0.49.1 ([6f48f85](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/6f48f854b5f24f463021c20ba0b2657eb7ac9d95))
+* **deps:** update plugin org.danilopianini.gradle-pre-commit-git-hooks to v1.1.10 ([6aacffd](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/6aacffd21ce2e542f33892d3312f87458e1779ae))
+
+
+### Documentation
+
+* **deps:** update plugin dokka to v1.9.0 ([db0a404](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/db0a404241a5f0d5ae3dff9d3f6bb3e49062e5b8))
+
+
+### Build and continuous integration
+
+* **deps:** update actions/checkout action to v4 ([7c01395](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/7c01395e0073c153ecb9e5acc6cfa277a7134b82))
+* **deps:** update smartoperatingblock/release-and-delivery-action action to v1.0.4 ([9dc82a6](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/9dc82a62eb77b59cfff247caef44124d6e0c1846))
+* **deps:** update smartoperatingblock/release-and-delivery-action action to v1.0.5 ([43f496b](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/43f496bf494ff15238507817172f621cc8599f89))
+
 ## [1.0.8](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.7...1.0.8) (2023-08-28)
 
 
