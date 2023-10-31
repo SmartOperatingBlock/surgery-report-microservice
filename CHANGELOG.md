@@ -1,3 +1,24 @@
+## [1.0.11](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.10...1.0.11) (2023-10-31)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlin:kotlin-stdlib to v1.9.20 ([9397b9f](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/9397b9ff9013e23563fdba272b034124ff2ed4a5))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.9.3 ([fd14c63](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/fd14c63c21a47ffe4e7eb7c3c27cebc0af2dbae0))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.69 ([09cff88](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/09cff8875ce4fcfb75f07de0f31cf3f1adc06c6c))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.70 ([57631f6](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/57631f6d0c0e33d435400050b8aa2f9a3cf3c7a9))
+* **deps:** update node.js to 20.9 ([85fa99e](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/85fa99ed70bf4c1d20599119ce3a5208b7dce403))
+* **deps:** update node.js to v20 ([885f854](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/885f854e014a86556d8538d7e884cb2f19aebce5))
+* **deps:** update plugin kotlin-qa to v0.51.1 ([7ee6227](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/7ee62270e8facb246b1bd9e2ae64b0b99783106c))
+* **deps:** update plugin kotlin-qa to v0.52.0 ([c205e78](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/c205e78e0564fae38ac01dc1d367185417919e5a))
+* **deps:** update plugin org.danilopianini.gradle-pre-commit-git-hooks to v1.1.12 ([92c5b90](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/92c5b90c763b0739a19fb366267ce2254054cbb9))
+* **deps:** update plugin org.danilopianini.gradle-pre-commit-git-hooks to v1.1.13 ([7d35921](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/7d35921b21bd64ecd603487c219ae2538efc809f))
+
+
+### Build and continuous integration
+
+* **deps:** update actions/setup-node action to v4 ([72308d2](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/72308d283968cfe48e72e0278a4f58ecece9b143))
+
 ## [1.0.10](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.9...1.0.10) (2023-10-18)
 
 
