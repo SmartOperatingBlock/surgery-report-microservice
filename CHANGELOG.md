@@ -1,3 +1,23 @@
+## [1.0.13](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.12...1.0.13) (2023-11-16)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-serialization-json to v1.6.1 ([dabe9ba](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/dabe9ba99913d293aab4bfccde6c08096fec8349))
+* **deps:** update dependency com.tngtech.archunit:archunit-junit5 to v1.2.0 ([870a6b8](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/870a6b83cfef95c33c31e4ff304fd7baf3b263de))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.10.0 ([bd842c4](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/bd842c4c9fb94b71f4a37702002e5a3283184730))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.10.1 ([3b7356c](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/3b7356c97847175ff3500d5f58ac9aff34ec94d5))
+* **deps:** update dependency org.litote.kmongo:kmongo-serialization to v4.11.0 ([0d5a1d6](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/0d5a1d6eb8c5ea44436c053045c878b33b5408a2))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.71 ([96552a0](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/96552a09802a8a56654f88725eacd75b61e543d9))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.72 ([b940ef2](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/b940ef2357c28b59184d80454a8e7953ef5e3382))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.73 ([a280fb0](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/a280fb058619d89936bc74c9cc6ed20f94338213))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.74 ([6e6f419](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/6e6f41902ce5d2522e814b79133211218cc83c3a))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.75 ([d6c0de3](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/d6c0de385b85496df65ba2df6110ca005c8d7d3d))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.76 ([63f1be8](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/63f1be897b98ea9479bbf960e98e46a797a97c56))
+* **deps:** update kotest to v5.8.0 ([dc075a2](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/dc075a2b181806123e699321f44ab09fbfb47eb6))
+* **deps:** update ktor to v2.3.6 ([b9260a0](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/b9260a0f8f39069ba499cf39d8b4b77bdc60a63a))
+* **deps:** update plugin org.danilopianini.gradle-pre-commit-git-hooks to v1.1.14 ([b65e327](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/b65e327d41523ef814f6f1e46cde5d6c9f5ec2a6))
+
 ## [1.0.12](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.11...1.0.12) (2023-11-02)
 
 
