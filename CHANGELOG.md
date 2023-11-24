@@ -1,3 +1,20 @@
+## [1.0.14](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.13...1.0.14) (2023-11-24)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlin:kotlin-stdlib to v1.9.21 ([e183419](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/e183419353808e4f56b0a565c8f57a89227ab9ea))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.10.2 ([a4ff5db](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/a4ff5db603d50c1399235ea2c9c7448e5aec7877))
+* **deps:** update dependency de.flapdoodle.embed:de.flapdoodle.embed.mongo to v4.11.1 ([82ebb14](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/82ebb141a603cd8625c8f8c07006bde72271b579))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.77 ([5416bc4](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/5416bc408945aec5c93dc9f4b3d5fd7396dccdc5))
+* **deps:** update dependency semantic-release-preconfigured-conventional-commits to v1.1.78 ([63abdcd](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/63abdcd83d369e13addf4319995063309ef38dc7))
+* **deps:** update node.js to 20.10 ([fb0a1e4](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/fb0a1e4f7dd5160c96818113181d62035d0f3466))
+
+
+### Build and continuous integration
+
+* **deps:** update smartoperatingblock/release-and-delivery-action action to v1.0.11 ([ed32071](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/ed320712714f5f1118791f32e95bc189021bffe1))
+
 ## [1.0.13](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.12...1.0.13) (2023-11-16)
 
 
