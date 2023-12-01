@@ -1,3 +1,23 @@
+## [1.0.16](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.15...1.0.16) (2023-12-01)
+
+
+### Dependency updates
+
+* **core-deps:** update dependency org.jetbrains.kotlinx:kotlinx-serialization-json to v1.6.2 ([8041316](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/8041316d9d8d4141aad86164435da723ea9f61d4))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.4.12 ([ef6ff45](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/ef6ff45a7f141f9e6fcfd94eaabe1ee11fca46c5))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.4.13 ([422166b](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/422166bdfdc126d6cf0df76e56d951d9a3155d99))
+* **deps:** update dependency gradle to v8.5 ([f1aa09e](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/f1aa09e323e1c8f82f8297f7bb242aea145fc068))
+* **deps:** update plugin kotlin-qa to v0.54.1 ([4cb6ddf](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/4cb6ddf1331430956d238eece3f82d9988b4a393))
+* **deps:** update plugin kotlin-qa to v0.55.0 ([8389a70](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/8389a70a7f4608e00283b8859b758ca07f312402))
+* **deps:** update plugin kotlin-qa to v0.55.1 ([5f650a2](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/5f650a2920e7002a69d1c3bf72a9aa024602d28d))
+* **deps:** update plugin kotlin-qa to v0.55.2 ([3544506](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/3544506b5ea7e9fca7fef6d4951d037184e3a093))
+* **deps:** update plugin org.danilopianini.gradle-pre-commit-git-hooks to v1.1.15 ([0dc0444](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/0dc0444b57a54db14b1e15e34ac3ec551f709d70))
+
+
+### Build and continuous integration
+
+* **deps:** update actions/setup-java action to v4 ([ef8bf9a](https://github.com/SmartOperatingBlock/surgery-report-microservice/commit/ef8bf9a2a5aefd5846c7e866c375abe85534dacd))
+
 ## [1.0.15](https://github.com/SmartOperatingBlock/surgery-report-microservice/compare/1.0.14...1.0.15) (2023-11-25)
 
 
